@@ -39,7 +39,7 @@ class TestProcessResponse(unittest.TestCase):
                     </litleOnlineResponse>"
         litleXml = litleOnlineRequest(config)
         response = litleXml._processResponse(xml_text)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def testWithXmlnsDoubleQuotes(self):
         xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
@@ -50,7 +50,7 @@ class TestProcessResponse(unittest.TestCase):
                     </litleOnlineResponse>"
         litleXml = litleOnlineRequest(config)
         response = litleXml._processResponse(xml_text)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def testWithOutXmlns(self):
         xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
@@ -61,7 +61,7 @@ class TestProcessResponse(unittest.TestCase):
                     </litleOnlineResponse>"
         litleXml = litleOnlineRequest(config)
         response = litleXml._processResponse(xml_text)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def testInvalidResponse(self):
         xml_text = "<litleOnlineResponse version='8.13' response='1' message='NotValid'></litleOnlineResponse>"

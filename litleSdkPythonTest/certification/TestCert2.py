@@ -44,12 +44,12 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("PREPAID",response.enhancedAuthResponse.fundingSource.type)
-        self.assertEquals("2000", response.enhancedAuthResponse.fundingSource.availableBalance)
-        self.assertEquals("NO", response.enhancedAuthResponse.fundingSource.reloadable)
-        self.assertEquals("GIFT", response.enhancedAuthResponse.fundingSource.prepaidCardType)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("PREPAID",response.enhancedAuthResponse.fundingSource.type)
+        self.assertEqual("2000", response.enhancedAuthResponse.fundingSource.availableBalance)
+        self.assertEqual("NO", response.enhancedAuthResponse.fundingSource.reloadable)
+        self.assertEqual("GIFT", response.enhancedAuthResponse.fundingSource.prepaidCardType)
         
     def test15(self):
         
@@ -65,12 +65,12 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("PREPAID",response.enhancedAuthResponse.fundingSource.type)
-        self.assertEquals("2000", response.enhancedAuthResponse.fundingSource.availableBalance)
-        self.assertEquals("YES", response.enhancedAuthResponse.fundingSource.reloadable)
-        self.assertEquals("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("PREPAID",response.enhancedAuthResponse.fundingSource.type)
+        self.assertEqual("2000", response.enhancedAuthResponse.fundingSource.availableBalance)
+        self.assertEqual("YES", response.enhancedAuthResponse.fundingSource.reloadable)
+        self.assertEqual("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
         
     def test16(self):
         
@@ -86,12 +86,12 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("PREPAID",response.enhancedAuthResponse.fundingSource.type)
-        self.assertEquals("0", response.enhancedAuthResponse.fundingSource.availableBalance)
-        self.assertEquals("YES", response.enhancedAuthResponse.fundingSource.reloadable)
-        self.assertEquals("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("PREPAID",response.enhancedAuthResponse.fundingSource.type)
+        self.assertEqual("0", response.enhancedAuthResponse.fundingSource.availableBalance)
+        self.assertEqual("YES", response.enhancedAuthResponse.fundingSource.reloadable)
+        self.assertEqual("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
         
     def test17(self):
         
@@ -107,12 +107,12 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("PREPAID",response.enhancedAuthResponse.fundingSource.type)
-        self.assertEquals("6500", response.enhancedAuthResponse.fundingSource.availableBalance)
-        self.assertEquals("YES", response.enhancedAuthResponse.fundingSource.reloadable)
-        self.assertEquals("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("PREPAID",response.enhancedAuthResponse.fundingSource.type)
+        self.assertEqual("6500", response.enhancedAuthResponse.fundingSource.availableBalance)
+        self.assertEqual("YES", response.enhancedAuthResponse.fundingSource.reloadable)
+        self.assertEqual("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
         
     def test18(self):
         
@@ -128,12 +128,12 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("PREPAID",response.enhancedAuthResponse.fundingSource.type)
-        self.assertEquals("12200", response.enhancedAuthResponse.fundingSource.availableBalance)
-        self.assertEquals("YES", response.enhancedAuthResponse.fundingSource.reloadable)
-        self.assertEquals("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("PREPAID",response.enhancedAuthResponse.fundingSource.type)
+        self.assertEqual("12200", response.enhancedAuthResponse.fundingSource.availableBalance)
+        self.assertEqual("YES", response.enhancedAuthResponse.fundingSource.reloadable)
+        self.assertEqual("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
         
     def test19(self):
         
@@ -149,12 +149,12 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("PREPAID",response.enhancedAuthResponse.fundingSource.type)
-        self.assertEquals("20000", response.enhancedAuthResponse.fundingSource.availableBalance)
-        self.assertEquals("YES", response.enhancedAuthResponse.fundingSource.reloadable)
-        self.assertEquals("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("PREPAID",response.enhancedAuthResponse.fundingSource.type)
+        self.assertEqual("20000", response.enhancedAuthResponse.fundingSource.availableBalance)
+        self.assertEqual("YES", response.enhancedAuthResponse.fundingSource.reloadable)
+        self.assertEqual("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
         
     def test20(self):
         
@@ -170,12 +170,12 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("PREPAID",response.enhancedAuthResponse.fundingSource.type)
-        self.assertEquals("10050", response.enhancedAuthResponse.fundingSource.availableBalance)
-        self.assertEquals("YES", response.enhancedAuthResponse.fundingSource.reloadable)
-        self.assertEquals("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("PREPAID",response.enhancedAuthResponse.fundingSource.type)
+        self.assertEqual("10050", response.enhancedAuthResponse.fundingSource.availableBalance)
+        self.assertEqual("YES", response.enhancedAuthResponse.fundingSource.reloadable)
+        self.assertEqual("PAYROLL", response.enhancedAuthResponse.fundingSource.prepaidCardType)
 
     def test21(self):
         
@@ -191,9 +191,9 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("AFFLUENT",response.enhancedAuthResponse.affluence)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("AFFLUENT",response.enhancedAuthResponse.affluence)
 
     def test22(self):
         
@@ -209,9 +209,9 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("MASS AFFLUENT",response.enhancedAuthResponse.affluence)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("MASS AFFLUENT",response.enhancedAuthResponse.affluence)
 
     def test23(self):
         
@@ -227,9 +227,9 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("AFFLUENT",response.enhancedAuthResponse.affluence)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("AFFLUENT",response.enhancedAuthResponse.affluence)
 
     def test24(self):
         
@@ -245,9 +245,9 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals('MASS AFFLUENT',response.enhancedAuthResponse.affluence)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual('MASS AFFLUENT',response.enhancedAuthResponse.affluence)
 
     def test25(self):
         
@@ -263,9 +263,9 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("BRA",response.enhancedAuthResponse.issuerCountry)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("BRA",response.enhancedAuthResponse.issuerCountry)
 
     def test26(self):
         
@@ -289,8 +289,8 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals("341",response.response)
-        self.assertEquals("Invalid healthcare amounts",response.message)
+        self.assertEqual("341",response.response)
+        self.assertEqual("Invalid healthcare amounts",response.message)
 
     def test27(self):
         
@@ -315,8 +315,8 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals("341",response.response)
-        self.assertEquals("Invalid healthcare amounts",response.message)
+        self.assertEqual("341",response.response)
+        self.assertEqual("Invalid healthcare amounts",response.message)
 
     def test28(self):
         
@@ -341,8 +341,8 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
 #       
     def test29(self):
         
@@ -370,8 +370,8 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals("341",response.response)
-        self.assertEquals("Invalid healthcare amounts",response.message)
+        self.assertEqual("341",response.response)
+        self.assertEqual("Invalid healthcare amounts",response.message)
 
     def test30(self):
         
@@ -399,8 +399,8 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals("341",response.response)
-        self.assertEquals("Invalid healthcare amounts",response.message)
+        self.assertEqual("341",response.response)
+        self.assertEqual("Invalid healthcare amounts",response.message)
 
     def test31(self):
         
@@ -426,9 +426,9 @@ class certTest2(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals("010",response.response)
-        self.assertEquals("Partially Approved",response.message)
-        self.assertEquals(18699, response.approvedAmount)
+        self.assertEqual("010",response.response)
+        self.assertEqual("Partially Approved",response.message)
+        self.assertEqual(18699, response.approvedAmount)
 
 def suite():
     suite = unittest.TestSuite()

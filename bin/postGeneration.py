@@ -34,11 +34,11 @@ def makeNotRequired(xfile, field):
 
 def cregex(find, replace, currentline, xfile, listindex, readlines):
     f = re.sub(find, replace, currentline)
-    print '\n' + xfile
-    print '- ' + currentline ,
-    if currentline[-1:] != '\n': print '\n' ,
-    print '+ ' + f
-    if f[-1:] != '\n': print '\n' ,
+    print('\n' + xfile)
+    print('- ' + currentline, end=' ')
+    if currentline[-1:] != '\n': print('\n', end=' ')
+    print('+ ' + f)
+    if f[-1:] != '\n': print('\n', end=' ')
     readlines[listindex] = f
     write_file=open(xfile,'w')
     for line in readlines:

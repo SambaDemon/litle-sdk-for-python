@@ -22,14 +22,14 @@
 #OTHER DEALINGS IN THE SOFTWARE.
 
 #import litleSdkPython
-import litleXmlFields
+from . import litleXmlFields
 import pyxb
 import os
-from Communications import *
-from Configuration import *
+from .Communications import *
+from .Configuration import *
 
 class litleOnlineRequest:
-        
+
     def __init__(self, Configuration):
         self.Configuration = Configuration
         self.MerchantId = Configuration.merchantId
@@ -45,9 +45,9 @@ class litleOnlineRequest:
             temp = dom.toxml('utf-8')
             temp= temp.replace('ns1:','')
             return temp.replace(':ns1','')
-        except pyxb.BindingValidationError,e:
+        except pyxb.ValidationError as e:
             raise Exception("Invalid Number of Choices, Fill Out One and Only One Choice",e)
-        
+
     def sendRequest(self,transaction, user=None, password=None, version=None, merchantId=None, reportGroup=None,
                     timeout=None, url=None, proxy=None):
         if (user != None):
@@ -62,16 +62,16 @@ class litleOnlineRequest:
         litleOnline = self._createTxn(transaction)
         requestXml = self._litleToXml(litleOnline)
         if(self.printXml):
-            print'\nRequest:\n', requestXml
+            print('\nRequest:\n', requestXml)
         responseXml = self.communications.http_post(requestXml, url=url,
                                                     proxy=proxy, timeout=timeout)
         if(self.printXml):
-            print '\nResponse:\n', responseXml
+            print('\nResponse:\n', responseXml)
         return self._processResponse(responseXml)
-    
+
     def setCommunications(self, communications):
         self.communications = communications
-     
+
     def _createTxn(self, transaction):
         litleOnline = litleXmlFields.litleOnlineRequest()
         litleOnline.merchantId = self.MerchantId
@@ -79,7 +79,7 @@ class litleOnlineRequest:
         litleOnline.merchantSdk = '9.3.2'
         authentication = litleXmlFields.authentication()
         authentication.user = self.User
-        authentication.password =  self.Password 
+        authentication.password =  self.Password
         litleOnline.authentication = authentication
         transaction.reportGroup = self.ReportGroup
         if isinstance(transaction, litleXmlFields.recurringTransactionType):
@@ -87,21 +87,21 @@ class litleOnlineRequest:
         else:
             litleOnline.transaction = transaction
         return litleOnline
-    
+
     def _addNamespace(self, responseXml):
         if ((responseXml.count("xmlns='http://www.litle.com/schema'") == 0) and
             (responseXml.count('xmlns="http://www.litle.com/schema"') == 0)):
-            return responseXml.replace(' response=',' xmlns="http://www.litle.com/schema" response=')    
+            return responseXml.replace(' response=',' xmlns="http://www.litle.com/schema" response=')
         return responseXml
-    
+
     def _processResponse(self, responseXml):
         temp = self._addNamespace(responseXml)
         try:
             response =litleXmlFields.CreateFromDocument(temp)
-        except Exception, e:
-            raise Exception("Error Processing Response", e)    
+        except Exception as e:
+            raise Exception("Error Processing Response", e)
         if (response.response == '0'):
             return response.transactionResponse
         else:
             raise Exception(response.message)
-      
+

@@ -31,10 +31,10 @@ litleXml = litleOnlineRequest(config)
 response = litleXml.sendRequest(auth)
  
 #display results
-print "Response: " + response.response
-print "Message: " + response.message
-print "LitleTransaction ID: " + str(response.litleTxnId)
-print "AVS Result: " + response.fraudResult.avsResult
+print("Response: " + response.response)
+print("Message: " + response.message)
+print("LitleTransaction ID: " + str(response.litleTxnId))
+print("AVS Result: " + response.fraudResult.avsResult)
 
 if response.response != "000":
         raise Exception("Invalid response")

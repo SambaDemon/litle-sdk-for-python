@@ -38,7 +38,7 @@ class TestCreateFromDom(unittest.TestCase):
                     <message>Approved</message><authCode>83307</authCode></captureGivenAuthResponse>\
                     </litleOnlineResponse>"
         xml_object = litleXmlFields.CreateFromDocument(xml_text)
-        self.assertEquals("Approved", xml_object.transactionResponse.message)
+        self.assertEqual("Approved", xml_object.transactionResponse.message)
         
     def test_simpleExtraFieldEmbeddedExtraField(self):
         xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
@@ -48,7 +48,7 @@ class TestCreateFromDom(unittest.TestCase):
                     <message>Approved</message><authCode><extraField>extra</extraField></authCode>\
                     </captureGivenAuthResponse></litleOnlineResponse>"
         xml_object = litleXmlFields.CreateFromDocument(xml_text)
-        self.assertEquals("Approved", xml_object.transactionResponse.message)
+        self.assertEqual("Approved", xml_object.transactionResponse.message)
         
     def test_simple_EmbeddedField(self):
         xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
@@ -59,8 +59,8 @@ class TestCreateFromDom(unittest.TestCase):
                     <tokenMessage>Message</tokenMessage><bin>bin</bin></tokenResponse></authorizationResponse>\
                     </litleOnlineResponse>"
         xml_object = litleXmlFields.CreateFromDocument(xml_text)
-        self.assertEquals("bin", xml_object.transactionResponse.tokenResponse.bin)
-        self.assertEquals("Message", xml_object.transactionResponse.tokenResponse.tokenMessage)
+        self.assertEqual("bin", xml_object.transactionResponse.tokenResponse.bin)
+        self.assertEqual("Message", xml_object.transactionResponse.tokenResponse.tokenMessage)
 
     def test_simple_ExtraEmbeddedField(self):
         xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
@@ -71,8 +71,8 @@ class TestCreateFromDom(unittest.TestCase):
         <tokenMessage>Message</tokenMessage><bin>bin</bin><extra>extra</extra></tokenResponse></authorizationResponse>\
         </litleOnlineResponse>"
         xml_object = litleXmlFields.CreateFromDocument(xml_text)
-        self.assertEquals("bin", xml_object.transactionResponse.tokenResponse.bin)
-        self.assertEquals("Message", xml_object.transactionResponse.tokenResponse.tokenMessage)
+        self.assertEqual("bin", xml_object.transactionResponse.tokenResponse.bin)
+        self.assertEqual("Message", xml_object.transactionResponse.tokenResponse.tokenMessage)
         
 def suite():
     suite = unittest.TestSuite()

@@ -22,8 +22,8 @@
 #FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 #OTHER DEALINGS IN THE SOFTWARE.
 
-from __future__ import print_function
-from __future__ import unicode_literals
+
+
 
 
 import os, sys
@@ -67,7 +67,7 @@ class TestUtf8(unittest.TestCase):
     	card.cardValidationNum = "123"
     	
     	billingAddress = litleXmlFields.contact()
-    	billingAddress.addressLine1 = u' チャプター'
+    	billingAddress.addressLine1 = ' チャプター'
         billingAddress.city = "Tokyo"
     	
     	authorization.card = card
@@ -76,7 +76,7 @@ class TestUtf8(unittest.TestCase):
     	litleXml = litleOnlineRequest(config)
     	response = litleXml.sendRequest(authorization)
     	
-    	self.assertEquals("001",response.response)
+    	self.assertEqual("001",response.response)
     
 def suite():
     suite = unittest.TestSuite()

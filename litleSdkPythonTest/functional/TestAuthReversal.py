@@ -40,7 +40,7 @@ class TestAuthReversal(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(reversal)
             
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
 
 def suite():
     suite = unittest.TestSuite()

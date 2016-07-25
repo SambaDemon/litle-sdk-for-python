@@ -56,29 +56,29 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("11111 ",response.authCode)
-        self.assertEquals( "01",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("11111 ",response.authCode)
+        self.assertEqual( "01",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
         
         capture = litleXmlFields.capture()
         capture.litleTxnId = response.litleTxnId
         captureresponse = litleXml.sendRequest(capture)
-        self.assertEquals( "000",captureresponse.response)
-        self.assertEquals("Approved",captureresponse.message)
+        self.assertEqual( "000",captureresponse.response)
+        self.assertEqual("Approved",captureresponse.message)
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = captureresponse.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
     def test1AVS(self):
             
@@ -106,11 +106,11 @@ class certTest1(unittest.TestCase):
             
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("11111 ",response.authCode)
-        self.assertEquals( "01",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("11111 ",response.authCode)
+        self.assertEqual( "01",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
         
     def test1Sale(self):
         
@@ -138,23 +138,23 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("11111 ",response.authCode)
-        self.assertEquals( "01",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("11111 ",response.authCode)
+        self.assertEqual( "01",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
        
         credit = litleXmlFields.credit()
         credit.litleTxnId = response.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
     def test2Auth(self):
         
@@ -187,29 +187,29 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("22222",response.authCode)
-        self.assertEquals( "10",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("22222",response.authCode)
+        self.assertEqual( "10",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
         
         capture = litleXmlFields.capture()
         capture.litleTxnId = response.litleTxnId
         captureresponse = litleXml.sendRequest(capture)
-        self.assertEquals( "000",captureresponse.response)
-        self.assertEquals("Approved",captureresponse.message)
+        self.assertEqual( "000",captureresponse.response)
+        self.assertEqual("Approved",captureresponse.message)
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = captureresponse.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test2AVS(self):
@@ -243,11 +243,11 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("22222",response.authCode)
-        self.assertEquals( "10",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("22222",response.authCode)
+        self.assertEqual( "10",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
 
         
     def test2Sale(self):
@@ -281,23 +281,23 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("22222",response.authCode)
-        self.assertEquals( "10",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("22222",response.authCode)
+        self.assertEqual( "10",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = response.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)    
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)    
         
         
     def test3Auth(self):
@@ -326,29 +326,29 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("33333",response.authCode)
-        self.assertEquals( "10",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("33333",response.authCode)
+        self.assertEqual( "10",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
         
         capture = litleXmlFields.capture()
         capture.litleTxnId = response.litleTxnId
         captureresponse = litleXml.sendRequest(capture)
-        self.assertEquals( "000",captureresponse.response)
-        self.assertEquals("Approved",captureresponse.message)
+        self.assertEqual( "000",captureresponse.response)
+        self.assertEqual("Approved",captureresponse.message)
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = captureresponse.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test3AVS(self):
@@ -377,11 +377,11 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("33333",response.authCode)
-        self.assertEquals( "10",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("33333",response.authCode)
+        self.assertEqual( "10",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
         
     def test3Sale(self):
         
@@ -409,23 +409,23 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("33333",response.authCode)
-        self.assertEquals( "10",response.fraudResult.avsResult)
-        self.assertEquals("M",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("33333",response.authCode)
+        self.assertEqual( "10",response.fraudResult.avsResult)
+        self.assertEqual("M",response.fraudResult.cardValidationResult);
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = response.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test4Auth(self):
@@ -454,28 +454,28 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("44444",response.authCode)
-        self.assertEquals( "12",response.fraudResult.avsResult)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("44444",response.authCode)
+        self.assertEqual( "12",response.fraudResult.avsResult)
         
         capture = litleXmlFields.capture()
         capture.litleTxnId = response.litleTxnId
         captureresponse = litleXml.sendRequest(capture)
-        self.assertEquals( "000",captureresponse.response)
-        self.assertEquals("Approved",captureresponse.message)
+        self.assertEqual( "000",captureresponse.response)
+        self.assertEqual("Approved",captureresponse.message)
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = captureresponse.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test4AVS(self):
@@ -504,10 +504,10 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("44444",response.authCode)
-        self.assertEquals( "12",response.fraudResult.avsResult)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("44444",response.authCode)
+        self.assertEqual( "12",response.fraudResult.avsResult)
         
         
     def test4Sale(self):
@@ -536,22 +536,22 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("44444",response.authCode)
-        self.assertEquals( "12",response.fraudResult.avsResult)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("44444",response.authCode)
+        self.assertEqual( "12",response.fraudResult.avsResult)
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = response.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test5Auth(self):
@@ -575,29 +575,29 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("55555 ",response.authCode)
-        self.assertEquals( "32",response.fraudResult.avsResult)
-        self.assertEquals("N",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("55555 ",response.authCode)
+        self.assertEqual( "32",response.fraudResult.avsResult)
+        self.assertEqual("N",response.fraudResult.cardValidationResult);
         
         capture = litleXmlFields.capture()
         capture.litleTxnId = response.litleTxnId
         captureresponse = litleXml.sendRequest(capture)
-        self.assertEquals( "000",captureresponse.response)
-        self.assertEquals("Approved",captureresponse.message)
+        self.assertEqual( "000",captureresponse.response)
+        self.assertEqual("Approved",captureresponse.message)
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = captureresponse.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test5AVS(self):
@@ -621,11 +621,11 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("55555 ",response.authCode)
-        self.assertEquals( "32",response.fraudResult.avsResult)
-        self.assertEquals("N",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("55555 ",response.authCode)
+        self.assertEqual( "32",response.fraudResult.avsResult)
+        self.assertEqual("N",response.fraudResult.cardValidationResult);
         
         
     def test5Sale(self):
@@ -649,23 +649,23 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("55555 ",response.authCode)
-        self.assertEquals( "32",response.fraudResult.avsResult)
-        self.assertEquals("N",response.fraudResult.cardValidationResult);
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("55555 ",response.authCode)
+        self.assertEqual( "32",response.fraudResult.avsResult)
+        self.assertEqual("N",response.fraudResult.cardValidationResult);
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = response.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test6Auth(self):
@@ -694,28 +694,28 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "110",response.response)
-        self.assertEquals("Insufficient Funds",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("P",response.fraudResult.cardValidationResult);
+        self.assertEqual( "110",response.response)
+        self.assertEqual("Insufficient Funds",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("P",response.fraudResult.cardValidationResult);
         
         capture = litleXmlFields.capture()
         capture.litleTxnId = response.litleTxnId
         captureresponse = litleXml.sendRequest(capture)
-        self.assertEquals( "000",captureresponse.response)
-        self.assertEquals("Approved",captureresponse.message)
+        self.assertEqual( "000",captureresponse.response)
+        self.assertEqual("Approved",captureresponse.message)
         
         credit = litleXmlFields.credit()
         credit.litleTxnId = captureresponse.litleTxnId
         creditresponse = litleXml.sendRequest(credit)
-        self.assertEquals( "000",creditresponse.response)
-        self.assertEquals("Approved",creditresponse.message)
+        self.assertEqual( "000",creditresponse.response)
+        self.assertEqual("Approved",creditresponse.message)
         
         void = litleXmlFields.void()
         void.litleTxnId = creditresponse.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "000",voidresponse.response)
-        self.assertEquals("Approved",voidresponse.message)
+        self.assertEqual( "000",voidresponse.response)
+        self.assertEqual("Approved",voidresponse.message)
         
         
     def test6Sale(self):
@@ -744,16 +744,16 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "110",response.response)
-        self.assertEquals("Insufficient Funds",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("P",response.fraudResult.cardValidationResult);
+        self.assertEqual( "110",response.response)
+        self.assertEqual("Insufficient Funds",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("P",response.fraudResult.cardValidationResult);
         
         void = litleXmlFields.void()
         void.litleTxnId = response.litleTxnId
         voidresponse = litleXml.sendRequest(void)
-        self.assertEquals( "360",voidresponse.response)
-        self.assertEquals("No transaction found with specified litleTxnId",voidresponse.message)
+        self.assertEqual( "360",voidresponse.response)
+        self.assertEqual("No transaction found with specified litleTxnId",voidresponse.message)
         
         
     def test7Auth(self):
@@ -782,10 +782,10 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "301",response.response)
-        self.assertEquals("Invalid Account Number",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("N",response.fraudResult.cardValidationResult);
+        self.assertEqual( "301",response.response)
+        self.assertEqual("Invalid Account Number",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("N",response.fraudResult.cardValidationResult);
         
         
     def test7AVS(self):
@@ -814,10 +814,10 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "301",response.response)
-        self.assertEquals("Invalid Account Number",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("N",response.fraudResult.cardValidationResult);
+        self.assertEqual( "301",response.response)
+        self.assertEqual("Invalid Account Number",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("N",response.fraudResult.cardValidationResult);
         
         
     def test7Sale(self):
@@ -846,10 +846,10 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "301",response.response)
-        self.assertEquals("Invalid Account Number",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("N",response.fraudResult.cardValidationResult);
+        self.assertEqual( "301",response.response)
+        self.assertEqual("Invalid Account Number",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("N",response.fraudResult.cardValidationResult);
         
         
     def test8Auth(self):
@@ -878,10 +878,10 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "123",response.response)
-        self.assertEquals("Call Discover",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("P",response.fraudResult.cardValidationResult);
+        self.assertEqual( "123",response.response)
+        self.assertEqual("Call Discover",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("P",response.fraudResult.cardValidationResult);
         
         
     def test8AVS(self):
@@ -910,10 +910,10 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "123",response.response)
-        self.assertEquals("Call Discover",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("P",response.fraudResult.cardValidationResult);
+        self.assertEqual( "123",response.response)
+        self.assertEqual("Call Discover",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("P",response.fraudResult.cardValidationResult);
         
         
     def test8Sale(self):
@@ -942,10 +942,10 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "123",response.response)
-        self.assertEquals("Call Discover",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
-        self.assertEquals("P",response.fraudResult.cardValidationResult);
+        self.assertEqual( "123",response.response)
+        self.assertEqual("Call Discover",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
+        self.assertEqual("P",response.fraudResult.cardValidationResult);
         
         
     def test9Auth(self):
@@ -974,9 +974,9 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "303",response.response)
-        self.assertEquals("Pick Up Card",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
+        self.assertEqual( "303",response.response)
+        self.assertEqual("Pick Up Card",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
         
         
     def test10Auth(self):
@@ -1005,9 +1005,9 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "303",response.response)
-        self.assertEquals("Pick Up Card",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
+        self.assertEqual( "303",response.response)
+        self.assertEqual("Pick Up Card",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
         
         
     def test11Auth(self):
@@ -1036,9 +1036,9 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals( "303",response.response)
-        self.assertEquals("Pick Up Card",response.message)
-        self.assertEquals( "34",response.fraudResult.avsResult)
+        self.assertEqual( "303",response.response)
+        self.assertEqual("Pick Up Card",response.message)
+        self.assertEqual( "34",response.fraudResult.avsResult)
         
         
     def test12Auth(self):
@@ -1059,9 +1059,9 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "010",response.response)
-        self.assertEquals("Partially Approved",response.message)
-        self.assertEquals( 32000L,response.approvedAmount)
+        self.assertEqual( "010",response.response)
+        self.assertEqual("Partially Approved",response.message)
+        self.assertEqual( 32000,response.approvedAmount)
         
         
     def test13Auth(self):
@@ -1082,9 +1082,9 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "010",response.response)
-        self.assertEquals("Partially Approved",response.message)
-        self.assertEquals( 48000L,response.approvedAmount)
+        self.assertEqual( "010",response.response)
+        self.assertEqual("Partially Approved",response.message)
+        self.assertEqual( 48000,response.approvedAmount)
         
         
     def test14Auth(self):
@@ -1105,9 +1105,9 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "010",response.response)
-        self.assertEquals("Partially Approved",response.message)
-        self.assertEquals( 40000L,response.approvedAmount)
+        self.assertEqual( "010",response.response)
+        self.assertEqual("Partially Approved",response.message)
+        self.assertEqual( 40000,response.approvedAmount)
         
     
     def test15Auth(self):
@@ -1128,9 +1128,9 @@ class certTest1(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
-        self.assertEquals( "010",response.response)
-        self.assertEquals("Partially Approved",response.message)
-        self.assertEquals( 12000L,response.approvedAmount)
+        self.assertEqual( "010",response.response)
+        self.assertEqual("Partially Approved",response.message)
+        self.assertEqual( 12000,response.approvedAmount)
         
 def suite():
     suite = unittest.TestSuite()

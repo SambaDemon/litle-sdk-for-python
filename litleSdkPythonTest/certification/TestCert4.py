@@ -49,8 +49,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(verification)
-        self.assertEquals("301", response.response)
-        self.assertEquals("Invalid Account Number", response.message)
+        self.assertEqual("301", response.response)
+        self.assertEqual("Invalid Account Number", response.message)
     
     def test38(self):
         verification = litleXmlFields.echeckVerification()
@@ -72,8 +72,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(verification)
-        self.assertEquals("000", response.response)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("000", response.response)
+        self.assertEqual("Approved", response.message)
         
     def test39(self):
         verification = litleXmlFields.echeckVerification()
@@ -96,8 +96,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(verification)
-        self.assertEquals("950", response.response)
-        self.assertEquals("Declined - Negative Information on File", response.message)
+        self.assertEqual("950", response.response)
+        self.assertEqual("Declined - Negative Information on File", response.message)
         
     def test40(self):
         verification = litleXmlFields.echeckVerification()
@@ -120,8 +120,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(verification)
-        self.assertEquals("951", response.response)
-        self.assertEquals("Absolute Decline", response.message)
+        self.assertEqual("951", response.response)
+        self.assertEqual("Absolute Decline", response.message)
         
     def test41(self):
         sale = litleXmlFields.echeckSale()
@@ -143,8 +143,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("301", response.response)
-        self.assertEquals("Invalid Account Number", response.message)
+        self.assertEqual("301", response.response)
+        self.assertEqual("Invalid Account Number", response.message)
         
     def test42(self):
         sale = litleXmlFields.echeckSale()
@@ -165,8 +165,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("000", response.response)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("000", response.response)
+        self.assertEqual("Approved", response.message)
         
     def test43(self):
         sale = litleXmlFields.echeckSale()
@@ -188,8 +188,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("000", response.response)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("000", response.response)
+        self.assertEqual("Approved", response.message)
         
     def test44(self):
         sale = litleXmlFields.echeckSale()
@@ -211,8 +211,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("900", response.response)
-        self.assertEquals("Invalid Bank Routing Number", response.message)
+        self.assertEqual("900", response.response)
+        self.assertEqual("Invalid Bank Routing Number", response.message)
         
     def test45(self):
         credit = litleXmlFields.echeckCredit()
@@ -233,8 +233,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("301", response.response)
-        self.assertEquals("Invalid Account Number", response.message)
+        self.assertEqual("301", response.response)
+        self.assertEqual("Invalid Account Number", response.message)
         
     def test46(self):
         credit = litleXmlFields.echeckCredit()
@@ -256,8 +256,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("000", response.response)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("000", response.response)
+        self.assertEqual("Approved", response.message)
         
     def test47(self):
         credit = litleXmlFields.echeckCredit()
@@ -279,8 +279,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("000", response.response)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("000", response.response)
+        self.assertEqual("Approved", response.message)
 #        
     def test48(self):
         credit = litleXmlFields.echeckCredit()
@@ -288,8 +288,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("000", response.response)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("000", response.response)
+        self.assertEqual("Approved", response.message)
         
     def test49(self):
         credit = litleXmlFields.echeckCredit()
@@ -297,8 +297,8 @@ class certTest4(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("360", response.response)
-        self.assertEquals("No transaction found with specified litleTxnId", response.message)
+        self.assertEqual("360", response.response)
+        self.assertEqual("No transaction found with specified litleTxnId", response.message)
 
 def suite():
     suite = unittest.TestSuite()

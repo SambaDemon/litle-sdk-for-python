@@ -21,15 +21,15 @@
 #FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 #OTHER DEALINGS IN THE SOFTWARE.
 
-import litleXmlFields
+from . import litleXmlFields
 import pyxb
 import os
 import shutil
-from Communications import *
-from litleBatchResponse import *
-from Configuration import *
+from .Communications import *
+from .litleBatchResponse import *
+from .Configuration import *
 import time
-from ConfigParser import *
+from configparser import *
 
 class litleBatchRequest:
     def __init__(self, fileRequest, merchantId = None):
@@ -343,7 +343,7 @@ class litleBatchRequest:
                 transaction.reportGroup = self.config.reportGroup
             try:
                 __batchFile.write(self.lbfr.tnxToXml(transaction))
-            except pyxb.BindingValidationError,e:
+            except pyxb.BindingValidationError as e:
                 raise Exception("There was an exception while translating the transaction object.",e)
             __batchFile.close()
             return TransactionCode.SUCCESS

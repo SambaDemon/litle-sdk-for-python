@@ -36,7 +36,7 @@ class TestToken(unittest.TestCase):
         token.accountNumber = '1233456789103801'
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals(response.message, "Account number was successfully registered")
+        self.assertEqual(response.message, "Account number was successfully registered")
         
     def testSimpleTokenWithPaypage(self):
         token = litleXmlFields.registerTokenRequest()
@@ -44,7 +44,7 @@ class TestToken(unittest.TestCase):
         token.paypageRegistrationId = '1233456789101112'
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals(response.message, "Account number was successfully registered")
+        self.assertEqual(response.message, "Account number was successfully registered")
         
     def testSimpleTokenWithEcheck(self):
         token = litleXmlFields.registerTokenRequest()
@@ -55,7 +55,7 @@ class TestToken(unittest.TestCase):
         token.echeckForToken = echeck
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals(response.message, "Account number was successfully registered")
+        self.assertEqual(response.message, "Account number was successfully registered")
         
     def testSimpleTokenWithApplepay(self):
         token = litleXmlFields.registerTokenRequest()
@@ -73,7 +73,7 @@ class TestToken(unittest.TestCase):
         token.applepay = applepay
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals(response.message, "Account number was successfully registered")
+        self.assertEqual(response.message, "Account number was successfully registered")
         self.assertEqual(0, response.applepayResponse.transactionAmount)
         
     def testTokenEcheckMissingRequiredField(self):
@@ -94,7 +94,7 @@ class TestToken(unittest.TestCase):
 
         litleXml =  litleOnlineRequest(config)
         tokenResponse = litleXml.sendRequest(tokenRequest)
-        self.assertEquals(tokenResponse.litleToken, "1111222233334444")
+        self.assertEqual(tokenResponse.litleToken, "1111222233334444")
 
 def suite():
     suite = unittest.TestSuite()

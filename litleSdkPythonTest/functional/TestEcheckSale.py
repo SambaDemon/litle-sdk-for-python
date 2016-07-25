@@ -52,7 +52,7 @@ class TestEcheckSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echecksale)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
 
     def testNoAmount(self):
         echecksale = litleXmlFields.echeckSale()
@@ -87,7 +87,7 @@ class TestEcheckSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echecksale)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
       
     def testEcheckSaleWithEcheckToken(self):
         echecksale = litleXmlFields.echeckSale()
@@ -118,7 +118,7 @@ class TestEcheckSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echecksale)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
         
     def testEcheckSaleWithSecoundaryAmountAndCCD(self):
         echecksale = litleXmlFields.echeckSale()
@@ -144,7 +144,7 @@ class TestEcheckSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echecksale)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
 
     def testEcheckSaleMissingBilling(self):
         echecksale = litleXmlFields.echeckSale()
@@ -174,7 +174,7 @@ class TestEcheckSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echecksale)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
         
     def testEcheckSaleWithLitleTxnIdAndSecondryAmount(self):
         echecksale = litleXmlFields.echeckSale()

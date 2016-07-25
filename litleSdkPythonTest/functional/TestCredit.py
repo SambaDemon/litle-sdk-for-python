@@ -23,7 +23,7 @@
 
 import os, sys
 from _ast import TryExcept
-from httplib import EXPECTATION_FAILED
+from http.client import EXPECTATION_FAILED
 lib_path = os.path.abspath('../all')
 sys.path.append(lib_path)
 
@@ -46,7 +46,7 @@ class TestCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
 
     def testSimpleCreditWithPaypal(self):
         credit = litleXmlFields.credit()
@@ -60,7 +60,7 @@ class TestCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def testSimpleCreditWithCardAndSecondaryAmount(self):
         credit = litleXmlFields.credit()
@@ -77,7 +77,7 @@ class TestCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def testsimpleCreditWithTxnAndSecondaryAmount(self):
         credit = litleXmlFields.credit()
@@ -94,7 +94,7 @@ class TestCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def simpleCreditConflictWithTxnAndOrderId(self):
         credit = litleXmlFields.credit()
@@ -125,7 +125,7 @@ class TestCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
 
     def testProcessingInstructionAndAmexData(self):
         credit = litleXmlFields.credit()
@@ -146,7 +146,7 @@ class TestCredit(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(credit)
             
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
 
 def suite():
     suite = unittest.TestSuite()

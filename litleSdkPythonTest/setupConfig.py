@@ -30,11 +30,11 @@ import string
 lib_path = os.path.abspath('testConfig.py')
 sys.path.append(lib_path)
 
-print "Setup for Litle SDK Tests" 
-user = raw_input('Enter your user, any value will work for testing: ')
-password = raw_input('Enter your password, any value will work for testing:  ')
-merchantId = raw_input('Enter your merchant Id, any value will work for testing:  ')
-proxy = raw_input('Enter your proxy, if no proxy hit enter: ')
+print("Setup for Litle SDK Tests") 
+user = input('Enter your user, any value will work for testing: ')
+password = input('Enter your password, any value will work for testing:  ')
+merchantId = input('Enter your merchant Id, any value will work for testing:  ')
+proxy = input('Enter your proxy, if no proxy hit enter: ')
 
 
 write_file = open(lib_path, 'w')
@@ -49,4 +49,4 @@ if (proxy != ""):
     write_file.write('config.proxy = "' + proxy + '"\n')
 write_file.write("config.url = 'Sandbox'\n")
 write_file.close()
-print 'Setup Finished, You May now run tests'
+print('Setup Finished, You May now run tests')

@@ -32,7 +32,7 @@ from mock import *
 class TestConfigOverride(unittest.TestCase):
 
     def setUp(self):
-        self.seq = range(10)
+        self.seq = list(range(10))
 
     def testUserOverride(self):
         authorization = litleXmlFields.authorization()

@@ -16,10 +16,10 @@ litleXml = litleOnlineRequest(config)
 response = litleXml.sendRequest(request)
  
 #display results
-print "Response: " + response.response
-print "Message: " + response.message
-print "LitleTransaction ID: " + str(response.litleTxnId)
-print "Litle Token: " + response.litleToken
+print("Response: " + response.response)
+print("Message: " + response.message)
+print("LitleTransaction ID: " + str(response.litleTxnId))
+print("Litle Token: " + response.litleToken)
 
 if response.response != "801":
 	raise Exception("Incorrect response")

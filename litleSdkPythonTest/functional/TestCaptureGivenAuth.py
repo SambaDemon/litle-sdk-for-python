@@ -50,7 +50,7 @@ class TestCaptureGivenAuth(unittest.TestCase):
         CaptureGivenAuth.card = Card
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(CaptureGivenAuth)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
         
     def testSimpleCaptureGivenAuthWithToken(self):
         CaptureGivenAuth = litleXmlFields.captureGivenAuth()
@@ -71,7 +71,7 @@ class TestCaptureGivenAuth(unittest.TestCase):
         CaptureGivenAuth.token = Token
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(CaptureGivenAuth)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
         
     def testComplexCaptureGivenAuth(self):
         CaptureGivenAuth = litleXmlFields.captureGivenAuth()
@@ -102,7 +102,7 @@ class TestCaptureGivenAuth(unittest.TestCase):
         CaptureGivenAuth.card = Card
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(CaptureGivenAuth)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
         
         
     def testAuthInfo(self):
@@ -130,7 +130,7 @@ class TestCaptureGivenAuth(unittest.TestCase):
         CaptureGivenAuth.card = Card
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(CaptureGivenAuth)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
    
 def suite():
     suite = unittest.TestSuite()

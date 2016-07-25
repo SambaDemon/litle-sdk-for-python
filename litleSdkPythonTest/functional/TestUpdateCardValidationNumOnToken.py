@@ -37,7 +37,7 @@ class TestUpdateCardValidationNumOnToken(unittest.TestCase):
 
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(update)
-        self.assertEquals("805",response.response)
+        self.assertEqual("805",response.response)
 
 def suite():
     suite = unittest.TestSuite()

@@ -37,7 +37,7 @@ class TestEcheckRedeposit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckredeposit)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
 
     def testEcheckRedepositWithEcheck(self):
         echeckredeposit = litleXmlFields.echeckRedeposit()
@@ -52,7 +52,7 @@ class TestEcheckRedeposit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckredeposit)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
 
     def testEcheckRedepositWithEcheckToken(self):
         echeckredeposit = litleXmlFields.echeckRedeposit()
@@ -66,7 +66,7 @@ class TestEcheckRedeposit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckredeposit)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
 
 def suite():
     suite = unittest.TestSuite()

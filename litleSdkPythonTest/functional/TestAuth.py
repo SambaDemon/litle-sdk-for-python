@@ -46,7 +46,7 @@ class TestAuth(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
             
-        self.assertEquals("000",response.response)
+        self.assertEqual("000",response.response)
 
 
     def testSimpleAuthWithPaypal(self):
@@ -66,7 +66,7 @@ class TestAuth(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
             
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
         
     def testSimpleAuthWithSecondaryAmountAndApplepay(self):
         
@@ -91,8 +91,8 @@ class TestAuth(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
             
-        self.assertEquals("Insufficient Funds",response.message)
-        self.assertEquals(110,response.applepayResponse.transactionAmount)
+        self.assertEqual("Insufficient Funds",response.message)
+        self.assertEqual(110,response.applepayResponse.transactionAmount)
        
 
     def testPosWithoutCapabilityAndEntryMode(self):
@@ -135,7 +135,7 @@ class TestAuth(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
             
-        self.assertEquals("4100100000000000",response.accountUpdater.originalCardInfo.number)
+        self.assertEqual("4100100000000000",response.accountUpdater.originalCardInfo.number)
 
     def testTrackData(self):
         authorization = litleXmlFields.authorization()
@@ -162,7 +162,7 @@ class TestAuth(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
 
-        self.assertEquals('Approved', response.message)
+        self.assertEqual('Approved', response.message)
 
     def testListOfTaxAmounts(self):
         authorization = litleXmlFields.authorization()
@@ -190,7 +190,7 @@ class TestAuth(unittest.TestCase):
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(authorization)
 
-        self.assertEquals('Approved', response.message)
+        self.assertEqual('Approved', response.message)
     
 def suite():
     suite = unittest.TestSuite()

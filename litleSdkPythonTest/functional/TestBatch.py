@@ -97,7 +97,7 @@ class TestBatch(unittest.TestCase):
         configFromFile = request.config
         self.assertEqual('prelive.litle.com', configFromFile.batchHost)
         self.assertEqual('15000', configFromFile.batchPort)
-        self.assertEquals('True', configFromFile.printXml)
+        self.assertEqual('True', configFromFile.printXml)
         requestDir = configFromFile.batchRequestFolder
         responseDir = configFromFile.batchResponseFolder
 

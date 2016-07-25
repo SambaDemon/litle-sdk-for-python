@@ -32,8 +32,8 @@ class TestSale(unittest.TestCase):
     
     def testSimpleSaleWithCard(self):
         sale = litleXmlFields.sale()
-        sale.litleTxnId = 123456L
-        sale.amount = 106L
+        sale.litleTxnId = 123456
+        sale.amount = 106
         sale.orderId = '12344'
         sale.orderSource = 'ecommerce'
         
@@ -45,12 +45,12 @@ class TestSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("Transaction Received",response.message)
+        self.assertEqual("Transaction Received",response.message)
         
     def testSimpleSaleWithPayPal(self):
         sale = litleXmlFields.sale()
-        sale.litleTxnId = 123456L
-        sale.amount = 106L
+        sale.litleTxnId = 123456
+        sale.amount = 106
         sale.orderId = '12344'
         sale.orderSource = 'ecommerce'
         
@@ -62,7 +62,7 @@ class TestSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
 
     def testSimpleSaleWithToken(self):
         sale = litleXmlFields.sale()
@@ -78,12 +78,12 @@ class TestSale(unittest.TestCase):
 
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("Approved",response.message)
+        self.assertEqual("Approved",response.message)
         
     def testSimpleSaleWithSecondaryAmountAndApplepay(self):
         sale = litleXmlFields.sale()
-        sale.litleTxnId = 123456L
-        sale.amount = 106L
+        sale.litleTxnId = 123456
+        sale.amount = 106
         sale.secondaryAmount = 10
         sale.orderId = '12344'
         sale.orderSource = 'ecommerce'
@@ -102,8 +102,8 @@ class TestSale(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals(106,response.applepayResponse.transactionAmount)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual(106,response.applepayResponse.transactionAmount)
 
 def suite():
     suite = unittest.TestSuite()

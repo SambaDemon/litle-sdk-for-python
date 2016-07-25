@@ -28,9 +28,9 @@ litleXml = litleOnlineRequest(config)
 response = litleXml.sendRequest(capturegivenauth)
  
 #display results
-print "Response: " + response.response
-print "Message: " + response.message
-print "LitleTransaction ID: " + str(response.litleTxnId)
+print("Response: " + response.response)
+print("Message: " + response.message)
+print("LitleTransaction ID: " + str(response.litleTxnId))
 
 if response.response != "000":
 	raise Exception("Invalid response")

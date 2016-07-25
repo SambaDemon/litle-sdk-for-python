@@ -38,11 +38,11 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals("445711",response.bin)
-        self.assertEquals( "VI",response.type)
-        self.assertEquals( "801",response.response)
-        self.assertEquals("1111222233330123",response.litleToken)
-        self.assertEquals("Account number was successfully registered",response.message)
+        self.assertEqual("445711",response.bin)
+        self.assertEqual( "VI",response.type)
+        self.assertEqual( "801",response.response)
+        self.assertEqual("1111222233330123",response.litleToken)
+        self.assertEqual("Account number was successfully registered",response.message)
         
         
     def test51(self):
@@ -53,8 +53,8 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals( "820",response.response)
-        self.assertEquals("Credit card number was invalid",response.message)
+        self.assertEqual( "820",response.response)
+        self.assertEqual("Credit card number was invalid",response.message)
         
         
     def test52(self):
@@ -65,11 +65,11 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals("445711",response.bin)
-        self.assertEquals( "VI",response.type)
-        self.assertEquals( "802",response.response)
-        self.assertEquals("1111222233330123",response.litleToken)
-        self.assertEquals("Account number was previously registered",response.message)
+        self.assertEqual("445711",response.bin)
+        self.assertEqual( "VI",response.type)
+        self.assertEqual( "802",response.response)
+        self.assertEqual("1111222233330123",response.litleToken)
+        self.assertEqual("Account number was previously registered",response.message)
         
         
     def test53(self):
@@ -83,11 +83,11 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals("998",response.eCheckAccountSuffix)
-        self.assertEquals( "EC",response.type)
-        self.assertEquals( "801",response.response)
-        self.assertEquals("111922223333000998",response.litleToken)
-        self.assertEquals("Account number was successfully registered",response.message)
+        self.assertEqual("998",response.eCheckAccountSuffix)
+        self.assertEqual( "EC",response.type)
+        self.assertEqual( "801",response.response)
+        self.assertEqual("111922223333000998",response.litleToken)
+        self.assertEqual("Account number was successfully registered",response.message)
         
         
     def test54(self):
@@ -101,8 +101,8 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(token)
-        self.assertEquals( "900",response.response)
-        self.assertEquals("Invalid bank routing number",response.message)
+        self.assertEqual( "900",response.response)
+        self.assertEqual("Invalid bank routing number",response.message)
         
         
     def test55(self):
@@ -121,12 +121,12 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(auth)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("801", response.tokenResponse.tokenResponseCode)
-        self.assertEquals("Account number was successfully registered", response.tokenResponse.tokenMessage)
-        self.assertEquals('MC', response.tokenResponse.type)
-        self.assertEquals("543510", response.tokenResponse.bin)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("801", response.tokenResponse.tokenResponseCode)
+        self.assertEqual("Account number was successfully registered", response.tokenResponse.tokenMessage)
+        self.assertEqual('MC', response.tokenResponse.type)
+        self.assertEqual("543510", response.tokenResponse.bin)
         
         
     def test56(self):
@@ -145,8 +145,8 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(auth)
-        self.assertEquals( "301",response.response)
-        self.assertEquals("Invalid account number",response.message)
+        self.assertEqual( "301",response.response)
+        self.assertEqual("Invalid account number",response.message)
         
         
     def test57(self):
@@ -165,12 +165,12 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(auth)
-        self.assertEquals( "000",response.response)
-        self.assertEquals("Approved",response.message)
-        self.assertEquals("802", response.tokenResponse.tokenResponseCode)
-        self.assertEquals("Account number was previously registered", response.tokenResponse.tokenMessage)
-        self.assertEquals('MC', response.tokenResponse.type)
-        self.assertEquals("543510", response.tokenResponse.bin)
+        self.assertEqual( "000",response.response)
+        self.assertEqual("Approved",response.message)
+        self.assertEqual("802", response.tokenResponse.tokenResponseCode)
+        self.assertEqual("Account number was previously registered", response.tokenResponse.tokenMessage)
+        self.assertEqual('MC', response.tokenResponse.type)
+        self.assertEqual("543510", response.tokenResponse.bin)
         
         
     def test59(self):
@@ -187,8 +187,8 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(auth)
-        self.assertEquals("822", response.response)
-        self.assertEquals("Token was not found", response.message)
+        self.assertEqual("822", response.response)
+        self.assertEqual("Token was not found", response.message)
         
         
     def test60(self):
@@ -205,8 +205,8 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(auth)
-        self.assertEquals("823", response.response)
-        self.assertEquals("Token was invalid", response.message)
+        self.assertEqual("823", response.response)
+        self.assertEqual("Token was invalid", response.message)
 
     def test61(self):
         
@@ -228,10 +228,10 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("801", response.tokenResponse.tokenResponseCode)
-        self.assertEquals("Account number was successfully registered", response.tokenResponse.tokenMessage)
-        self.assertEquals('EC', response.tokenResponse.type)
-        self.assertEquals("111922223333444003", response.tokenResponse.litleToken)
+        self.assertEqual("801", response.tokenResponse.tokenResponseCode)
+        self.assertEqual("Account number was successfully registered", response.tokenResponse.tokenMessage)
+        self.assertEqual('EC', response.tokenResponse.type)
+        self.assertEqual("111922223333444003", response.tokenResponse.litleToken)
         
         
     def test62(self):
@@ -254,11 +254,11 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("801", response.tokenResponse.tokenResponseCode)
-        self.assertEquals("Account number was successfully registered", response.tokenResponse.tokenMessage)
-        self.assertEquals('EC', response.tokenResponse.type)
-        self.assertEquals("999", response.tokenResponse.eCheckAccountSuffix)
-        self.assertEquals("111922223333444999", response.tokenResponse.litleToken)
+        self.assertEqual("801", response.tokenResponse.tokenResponseCode)
+        self.assertEqual("Account number was successfully registered", response.tokenResponse.tokenMessage)
+        self.assertEqual('EC', response.tokenResponse.type)
+        self.assertEqual("999", response.tokenResponse.eCheckAccountSuffix)
+        self.assertEqual("111922223333444999", response.tokenResponse.litleToken)
         
     def test63(self):
         
@@ -280,11 +280,11 @@ class certTest5(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(sale)
-        self.assertEquals("801", response.tokenResponse.tokenResponseCode)
-        self.assertEquals("Account number was successfully registered", response.tokenResponse.tokenMessage)
-        self.assertEquals('EC', response.tokenResponse.type)
-        self.assertEquals("999", response.tokenResponse.eCheckAccountSuffix)
-        self.assertEquals("111922223333555999", response.tokenResponse.litleToken)
+        self.assertEqual("801", response.tokenResponse.tokenResponseCode)
+        self.assertEqual("Account number was successfully registered", response.tokenResponse.tokenMessage)
+        self.assertEqual('EC', response.tokenResponse.type)
+        self.assertEqual("999", response.tokenResponse.eCheckAccountSuffix)
+        self.assertEqual("111922223333555999", response.tokenResponse.litleToken)
 
 def suite():
     suite = unittest.TestSuite()

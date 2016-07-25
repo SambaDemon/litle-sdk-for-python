@@ -33,7 +33,7 @@ from array import *
 class TestPostGenerationScript(unittest.TestCase):
 
     def setUp(self):
-        self.seq = range(10)
+        self.seq = list(range(10))
 
     def test_minOccurs_zero_on_orderId_orderSource_amount_billToAddress(self):
         authorization = litleXmlFields.authorization()        
@@ -207,13 +207,13 @@ class TestPostGenerationScript(unittest.TestCase):
         outputString = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><authorizationResponse id='' reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId><orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime><message>Approved</message><tokenResponse><litleToken>4242424242424242</litleToken><tokenResponseCode>111</tokenResponseCode><bin>bin</bin></tokenResponse></authorizationResponse></litleOnlineResponse>"
         litleXml = litleOnlineRequest(config)
         xml_object = litleXml._processResponse(outputString)
-        self.assertEquals("bin", xml_object.tokenResponse.bin)
+        self.assertEqual("bin", xml_object.tokenResponse.bin)
         
     def test_minOccurs_availableBalance(self):
         outputString = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'><authorizationResponse id='' reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId><orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime><message>Approved</message><enhancedAuthResponse></enhancedAuthResponse></authorizationResponse></litleOnlineResponse>"
         litleXml = litleOnlineRequest(config)
         xml_object = litleXml._processResponse(outputString)
-        self.assertEquals("DefaultReportGroup", xml_object.reportGroup)
+        self.assertEqual("DefaultReportGroup", xml_object.reportGroup)
         
     def test_minOccurs_bmlMerhcantId(self):
         authorization = litleXmlFields.authorization()

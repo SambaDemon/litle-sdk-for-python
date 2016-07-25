@@ -37,7 +37,7 @@ class TestEcheckCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckCredit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
 
     def testNoLitleTxnId(self):
         echeckCredit = litleXmlFields.echeckCredit()
@@ -68,7 +68,7 @@ class TestEcheckCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckCredit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def testEcheckCreditWithSecondryAmount(self):
         echeckCredit = litleXmlFields.echeckCredit()
@@ -93,7 +93,7 @@ class TestEcheckCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckCredit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
         
     def testEcheckCreditWithLitleTxnIdAndSecondryAmount(self):
         echeckCredit = litleXmlFields.echeckCredit()
@@ -103,7 +103,7 @@ class TestEcheckCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckCredit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
 
     def testEcheckCreditWithToken(self):
         echeckCredit = litleXmlFields.echeckCredit()
@@ -127,7 +127,7 @@ class TestEcheckCredit(unittest.TestCase):
         
         litleXml =  litleOnlineRequest(config)
         response = litleXml.sendRequest(echeckCredit)
-        self.assertEquals("Approved", response.message)
+        self.assertEqual("Approved", response.message)
 
     def testMissingBilling(self):
         echeckCredit = litleXmlFields.echeckCredit()

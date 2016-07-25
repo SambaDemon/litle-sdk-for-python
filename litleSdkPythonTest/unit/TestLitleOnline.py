@@ -34,7 +34,7 @@ from mock import *
 class TestLitleOnline(unittest.TestCase):
 
     def setUp(self):
-        self.seq = range(10)
+        self.seq = list(range(10))
 
     def testAuth(self):
         authorization = litleXmlFields.authorization()
@@ -1071,7 +1071,7 @@ class TestLitleOnline(unittest.TestCase):
         
         fraudCheck=litleXmlFields.fraudCheckType()
         encoded = base64.b64encode('data to be encodedaaaaaaaaaabbbbbbbbbbcc') #generating a base64 encoded data of length 56, expect no exception
-        self.assertEquals(56,len(encoded))
+        self.assertEqual(56,len(encoded))
         fraudCheck.authenticationValue=encoded
         authorization.cardholderAuthentication=fraudCheck
         

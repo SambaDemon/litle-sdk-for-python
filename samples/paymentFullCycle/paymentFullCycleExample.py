@@ -34,9 +34,9 @@ litleXml = litleOnlineRequest(config)
 authResponse = litleXml.sendRequest(auth)
  
 #Auth Results
-print "Response: " + authResponse.response
-print "Message: " + authResponse.message
-print "LitleTransaction ID: " + str(authResponse.litleTxnId)
+print("Response: " + authResponse.response)
+print("Message: " + authResponse.message)
+print("LitleTransaction ID: " + str(authResponse.litleTxnId))
 
 if authResponse.response != "000":
 	raise Exception("Invalid auth response")
@@ -49,9 +49,9 @@ captureResponse = litleXml.sendRequest(capture)
 
  
 #Capture Results
-print "Capture Response: " + captureResponse.response
-print "Message: " + captureResponse.message
-print "LitleTransaction ID: " + str(captureResponse.litleTxnId)
+print("Capture Response: " + captureResponse.response)
+print("Message: " + captureResponse.message)
+print("LitleTransaction ID: " + str(captureResponse.litleTxnId))
 
 if captureResponse.response != "000":
         raise Exception("Invalid capture response")
@@ -63,9 +63,9 @@ credit.litleTxnId = captureResponse.litleTxnId
 creditResponse = litleXml.sendRequest(credit)
  
 #Credit Results
-print "Credit Response: " + creditResponse.response
-print "Message: " + creditResponse.message
-print "LitleTransaction ID: " + str(creditResponse.litleTxnId)
+print("Credit Response: " + creditResponse.response)
+print("Message: " + creditResponse.message)
+print("LitleTransaction ID: " + str(creditResponse.litleTxnId))
 
 if creditResponse.response != "000":
         raise Exception("Invalid credit response")
@@ -77,9 +77,9 @@ void.litleTxnId = creditResponse.litleTxnId
 voidResponse = litleXml.sendRequest(void)
  
 #Void Results
-print "Void Response: " + voidResponse.response
-print "Message: " + voidResponse.message
-print "LitleTransaction ID: " + str(voidResponse.litleTxnId)
+print("Void Response: " + voidResponse.response)
+print("Message: " + voidResponse.message)
+print("LitleTransaction ID: " + str(voidResponse.litleTxnId))
 
 
 if authResponse.response != "000":
