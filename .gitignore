@@ -2,6 +2,9 @@
 /dist
 /LitleSdkPython.egg-info
 .project
+*.bak
+__pycache__
+.ropeproject
 .pydevproject
 /nosetests.xml
 .idea/
