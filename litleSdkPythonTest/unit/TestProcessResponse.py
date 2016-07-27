@@ -30,50 +30,82 @@ sys.path.append(lib_path)
 from SetupTest import *
 
 
+class XmlText():
+    pass
+
+
 class TestProcessResponse(unittest.TestCase):
 
     def testWithXmlnsSingleQuotes(self):
-        xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
-                    xmlns='http://www.litle.com/schema'><captureGivenAuthResponse id='' \
-                    reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId>\
-                    <orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime>\
-                    <message>Approved</message><authCode>83307</authCode></captureGivenAuthResponse>\
-                    </litleOnlineResponse>"
-        xml_text.content = xml_text
+        xml_text = XmlText()
+        xml_text.content = (b"""<litleOnlineResponse version='10.1' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'>
+                            <saleResponse id='' reportGroup='Default Report Group' customerId=''>
+                            <litleTxnId>100000000000000006</litleTxnId>
+                            <orderId>1</orderId>
+                            <response>000</response>
+                            <responseTime>2016-07-27T06:05:45</responseTime>
+                            <message>Approved</message>
+                            <authCode>11111 </authCode>
+                            <fraudResult>
+                            <avsResult>01</avsResult>
+                            <cardValidationResult>M</cardValidationResult>
+                            </fraudResult>
+                            </saleResponse>
+                            </litleOnlineResponse>""")
         litleXml = litleOnlineRequest(config)
         response = litleXml._processResponse(xml_text)
         self.assertEqual("Approved", response.message)
 
     def testWithXmlnsDoubleQuotes(self):
-        xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
-                    xmlns=\"http://www.litle.com/schema\"><captureGivenAuthResponse id='' \
-                    reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId>\
-                    <orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime>\
-                    <message>Approved</message><authCode>83307</authCode></captureGivenAuthResponse>\
-                    </litleOnlineResponse>"
+        xml_text = XmlText()
         litleXml = litleOnlineRequest(config)
+        xml_text.content = (b"""<litleOnlineResponse version='10.1' response='0' message='Valid Format' xmlns="http://www.litle.com/schema">
+                            <saleResponse id='' reportGroup='Default Report Group' customerId=''>
+                            <litleTxnId>100000000000000006</litleTxnId>
+                            <orderId>1</orderId>
+                            <response>000</response>
+                            <responseTime>2016-07-27T06:05:45</responseTime>
+                            <message>Approved</message>
+                            <authCode>11111 </authCode>
+                            <fraudResult>
+                            <avsResult>01</avsResult>
+                            <cardValidationResult>M</cardValidationResult>
+                            </fraudResult>
+                            </saleResponse>
+                            </litleOnlineResponse>""")
         response = litleXml._processResponse(xml_text)
         self.assertEqual("Approved", response.message)
 
     def testWithOutXmlns(self):
-        xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
-                    ><captureGivenAuthResponse id='' \
-                    reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId>\
-                    <orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime>\
-                    <message>Approved</message><authCode>83307</authCode></captureGivenAuthResponse>\
-                    </litleOnlineResponse>"
+        xml_text = XmlText()
+        xml_text.content = (b"""<litleOnlineResponse version='10.1' response='0' message='Valid Format'>
+                            <saleResponse id='' reportGroup='Default Report Group' customerId=''>
+                            <litleTxnId>100000000000000006</litleTxnId>
+                            <orderId>1</orderId>
+                            <response>000</response>
+                            <responseTime>2016-07-27T06:05:45</responseTime>
+                            <message>Approved</message>
+                            <authCode>11111 </authCode>
+                            <fraudResult>
+                            <avsResult>01</avsResult>
+                            <cardValidationResult>M</cardValidationResult>
+                            </fraudResult>
+                            </saleResponse>
+                            </litleOnlineResponse>""")
         litleXml = litleOnlineRequest(config)
         response = litleXml._processResponse(xml_text)
         self.assertEqual("Approved", response.message)
 
     def testInvalidResponse(self):
-        xml_text = "<litleOnlineResponse version='8.13' response='1' message='NotValid'></litleOnlineResponse>"
+        xml_text = XmlText()
+        xml_text.content = b"<litleOnlineResponse version='8.13' response='1' message='NotValid'></litleOnlineResponse>"
         litleXml = litleOnlineRequest(config)
         with self.assertRaises(Exception):
             response = litleXml._processResponse(xml_text)
 
     def testInvalidXml(self):
-        xml_text = "<litleOnlineResponse verion='8.13' response='1' message='NotValid'></litleOnlineResponse>"
+        xml_text = XmlText()
+        xml_text.content = b"<litleOnlineResponse verion='8.13' response='1' message='NotValid'></litleOnlineResponse>"
         litleXml = litleOnlineRequest(config)
         with self.assertRaises(Exception):
             response = litleXml._processResponse(xml_text)
@@ -84,5 +116,5 @@ def suite():
     suite = unittest.TestLoader().loadTestsFromTestCase(TestProcessResponse)
     return suite
 
-if __name__ =='__main__':
+if __name__ == '__main__':
     unittest.main()

@@ -72,6 +72,7 @@ class litleOnlineRequest:
             requestXml, url=url, proxy=proxy, timeout=timeout)
         if(self.printXml):
             print('\nResponse:\n', responseXml)
+            print('\nResponce body:\n', responseXml.content)
         return self._processResponse(responseXml)
 
     def setCommunications(self, communications):
@@ -98,7 +99,7 @@ class litleOnlineRequest:
                 (responseXml.count(
                     b'xmlns="http://www.litle.com/schema"') == 0)):
             return responseXml.replace(
-                b' response=', b' xmlns="http://www.litle.com/schema" response=')
+               b' response=', b' xmlns="http://www.litle.com/schema" response=')
         return responseXml
 
     def _processResponse(self, responseXml):
