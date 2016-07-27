@@ -94,15 +94,15 @@ class litleOnlineRequest:
         return litleOnline
 
     def _addNamespace(self, responseXml):
-        if ((responseXml.count("xmlns='http://www.litle.com/schema'") == 0) and
+        if ((responseXml.count(b"xmlns='http://www.litle.com/schema'") == 0) and
                 (responseXml.count(
-                    'xmlns="http://www.litle.com/schema"') == 0)):
+                    b'xmlns="http://www.litle.com/schema"') == 0)):
             return responseXml.replace(
-                ' response=', ' xmlns="http://www.litle.com/schema" response=')
+                b' response=', b' xmlns="http://www.litle.com/schema" response=')
         return responseXml
 
     def _processResponse(self, responseXml):
-        temp = self._addNamespace(responseXml)
+        temp = self._addNamespace(responseXml.content)
         try:
             response = litleXmlFields.CreateFromDocument(temp)
         except Exception as e:

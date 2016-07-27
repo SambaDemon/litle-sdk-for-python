@@ -53,7 +53,7 @@ class Communications:
         try:
             response = requests.post(
                 url=self.Url, headers=headers,
-                proxies=self.Proxy, data=post_data)
+                proxies={'https': self.Proxy}, data=post_data)
         except Exception as e:
             raise Exception(
                "Error with Https Request, \

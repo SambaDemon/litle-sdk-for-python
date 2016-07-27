@@ -38,6 +38,6 @@ config = testConfig.config
 class RegexMatcher(object):
     def __init__(self, pattern):
          self.pattern = pattern
-    def __eq__(self, other):         
+    def __eq__(self, other):
         return re.match(self.pattern, other)
-     
+
