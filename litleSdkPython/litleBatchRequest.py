@@ -494,10 +494,12 @@ class litleBatchFileRequest:
 
     def tnxToXml(self, transaction):
         dom = transaction.toDOM()
-        temp = dom.toxml('utf-8')
-        temp= temp.replace('ns1:','')
-        temp =  temp.replace(':ns1','')
-        return temp.replace('<?xml version="1.0" encoding="utf-8"?>','')
+        temp = dom.toxml()
+        temp = temp.replace('ns1:','')
+        temp = temp.replace(':ns1','')
+        temp = temp.replace('<?xml version="1.0" encoding="utf-8"?>','')
+        temp = bytes(temp, 'utf-8')
+        return temp
 
     def getNumberOfBatches(self):
         return len(self.batchRequestList)
