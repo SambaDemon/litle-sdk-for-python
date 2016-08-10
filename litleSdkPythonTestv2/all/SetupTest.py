@@ -32,8 +32,13 @@ from litleSdkPython.litleBatchResponse import *
 
 lib_path = os.path.abspath('../')
 sys.path.append(lib_path)
-import testConfig
-config = testConfig.config
+
+config = Configuration()
+config.username = "jenkins"
+config.password = "PYTHON"
+config.merchantId = "101"
+config.reportGroup = 'DefaultReportGroup'
+config.url = 'Sandbox'
 
 class RegexMatcher(object):
     def __init__(self, pattern):

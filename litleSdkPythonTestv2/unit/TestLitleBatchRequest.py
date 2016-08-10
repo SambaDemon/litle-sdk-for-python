@@ -358,7 +358,7 @@ class TestLitleBatchRequest(unittest.TestCase):
 
         with self.assertRaises(Exception):
             batchRequest.addTransaction(accountUpdate)
-            
+
     def testAddSubmerchantCredit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         submerchantCredit = litleXmlFields.submerchantCredit()
@@ -369,7 +369,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.submerchantCreditAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numSubmerchantCredit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddSubmerchantDebit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         submerchantDebit = litleXmlFields.submerchantDebit()
@@ -391,7 +391,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.payFacCreditAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numPayFacCredit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddPayFacDebit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         payFacDebit = litleXmlFields.payFacDebit()
@@ -402,7 +402,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.payFacDebitAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numPayFacDebit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddReserveCredit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         reserveCredit = litleXmlFields.reserveCredit()
@@ -413,7 +413,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.reserveCreditAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numReserveCredit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddReserveDebit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         reserveDebit = litleXmlFields.reserveDebit()
@@ -424,7 +424,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.reserveDebitAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numReserveDebit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddVendorCredit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         vendorCredit= litleXmlFields.vendorCredit()
@@ -435,7 +435,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.vendorCreditAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numVendorCredit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddVendorDebit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         vendorDebit= litleXmlFields.vendorDebit()
@@ -446,7 +446,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.vendorDebitAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numVendorDebit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddPhysicalCheckCredit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         physicalCheckCredit= litleXmlFields.physicalCheckCredit()
@@ -457,7 +457,7 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.physicalCheckCreditAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numPhysicalCheckCredit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
+
     def testAddPhysicalCheckDebit(self):
         batchRequest = self.litleBatchFileRequest.createBatch()
         physicalCheckDebit= litleXmlFields.physicalCheckDebit()
@@ -468,9 +468,9 @@ class TestLitleBatchRequest(unittest.TestCase):
         self.assertEqual(batchRequest._batchRequest.physicalCheckDebitAmount, 25)
         self.assertEqual(batchRequest._batchRequest.numPhysicalCheckDebit, 1)
         self.assertEqual(batchRequest.numOfTxn, 1)
-        
-        
-        
+
+
+
 
 def suite():
     suite = unittest.TestSuite()
@@ -489,3 +489,8 @@ def createTestSale(amount, orderId):
     sale.card = card
     sale.reportGroup = 'test'
     return sale
+
+
+if __name__ == '__main__' :
+    unittest.main()
+

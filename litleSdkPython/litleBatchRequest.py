@@ -116,7 +116,7 @@ class litleBatchRequest:
 
     def addTransaction(self, transaction):
         if self.numOfTxn == 0:
-            __batchFile = open(self._filePath, 'w')
+            __batchFile = open(self._filePath, 'wb')
         else:
             __batchFile = open(self._filePath, 'a')
 
@@ -197,12 +197,12 @@ class litleBatchRequest:
             self._batchRequest.numEcheckRedeposit += 1
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.echeckPreNoteSale.typeDefinition()):
             self._batchRequest.numEcheckPreNoteSale += 1
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.echeckPreNoteCredit.typeDefinition()):
             self._batchRequest.numEcheckPreNoteCredit += 1
             __transactionAdded = True
@@ -213,61 +213,61 @@ class litleBatchRequest:
             self._batchRequest.echeckSalesAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.submerchantCredit.typeDefinition()):
             self._batchRequest.numSubmerchantCredit += 1
             self._batchRequest.submerchantCreditAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.submerchantDebit.typeDefinition()):
             self._batchRequest.numSubmerchantDebit += 1
             self._batchRequest.submerchantDebitAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.payFacCredit.typeDefinition()):
             self._batchRequest.numPayFacCredit += 1
             self._batchRequest.payFacCreditAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.payFacDebit.typeDefinition()):
             self._batchRequest.numPayFacDebit += 1
             self._batchRequest.payFacDebitAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.reserveCredit.typeDefinition()):
             self._batchRequest.numReserveCredit += 1
             self._batchRequest.reserveCreditAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.reserveDebit.typeDefinition()):
             self._batchRequest.numReserveDebit += 1
             self._batchRequest.reserveDebitAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.vendorCredit.typeDefinition()):
             self._batchRequest.numVendorCredit += 1
             self._batchRequest.vendorCreditAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.vendorDebit.typeDefinition()):
             self._batchRequest.numVendorDebit += 1
             self._batchRequest.vendorDebitAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.physicalCheckCredit.typeDefinition()):
             self._batchRequest.numPhysicalCheckCredit += 1
             self._batchRequest.physicalCheckCreditAmount += transaction.amount
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.physicalCheckDebit.typeDefinition()):
             self._batchRequest.numPhysicalCheckDebit += 1
             self._batchRequest.physicalCheckDebitAmount += transaction.amount
@@ -278,7 +278,7 @@ class litleBatchRequest:
             self._batchRequest.numUpdateCardValidationNumOnTokens += 1
             __transactionAdded = True
             self.numOfTxn += 1
-            
+
         elif isinstance(transaction, litleXmlFields.updateSubscription.typeDefinition()):
             self._batchRequest.numUpdateSubscriptions += 1
             __transactionAdded = True
@@ -397,7 +397,7 @@ class litleBatchFileRequest:
         for prop in propertyList:
             if confParser.has_option('PythonSDK', prop) and not hasattr(self.config, prop):
                 setattr(self.config, prop, confParser.get('PythonSDK', prop))
-        
+
         if confParser.has_option('PythonSDK', 'printXml') and hasattr(self.config, 'printXml') and self.config.printXml == None :
             setattr(self.config, 'printXml', confParser.get('PythonSDK','printXml'))
 

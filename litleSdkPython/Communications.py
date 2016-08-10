@@ -32,6 +32,10 @@ import io
 import ssl
 import errno
 from time import gmtime, strftime
+from urllib3.contrib import pyopenssl
+
+# PyOpenSSL injection monkeypatch to avoid SSH protocol violation
+pyopenssl.inject_into_urllib3()
 
 
 class Communications:
@@ -41,6 +45,7 @@ class Communications:
         self.Url = Configuration.url
 
     def http_post(self, post_data, url=None, proxy=None, timeout=None):
+
         headers = {'Content-Type': 'text/xml'}
 
         if (url is not None):
@@ -52,8 +57,7 @@ class Communications:
 
         try:
             response = requests.post(
-                url=self.Url, headers=headers,
-                proxies={'https': self.Proxy}, data=post_data)
+                url=self.Url, headers=headers, data=post_data)
         except Exception as e:
             raise Exception(
                "Error with Https Request, \
