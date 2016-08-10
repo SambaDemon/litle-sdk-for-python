@@ -21,33 +21,17 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
 
-import os, sys
-lib_path = os.path.abspath('../all')
-sys.path.append(lib_path)
-
 from SetupTest import *
-import unittest
 
-class TestCreateFromDom(unittest.TestCase):
 
-    def testSimpleExtraField(self):
-        xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
-                    xmlns='http://www.litle.com/schema'><captureGivenAuthResponse id='' \
-                    reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId>\
-                    <orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime>\
-                    <message>Approved</message><authCode>83307</authCode></captureGivenAuthResponse>\
-                    </litleOnlineResponse>"
-        xml_object = litleXmlFields.CreateFromDocument(xml_text)
+class TestCreateFromDom():
+
+    def test_simple_extra_field(self, simple_extra_field):
+        xml_object = litleXmlFields.CreateFromDocument(simple_extra_field)
         self.assertEqual("Approved", xml_object.transactionResponse.message)
 
-    def test_simpleExtraFieldEmbeddedExtraField(self):
-        xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
-                    xmlns='http://www.litle.com/schema'><captureGivenAuthResponse id='' \
-                    reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId>\
-                    <orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime>\
-                    <message>Approved</message><authCode><extraField>extra</extraField></authCode>\
-                    </captureGivenAuthResponse></litleOnlineResponse>"
-        xml_object = litleXmlFields.CreateFromDocument(xml_text)
+    def test_simple_extra_field_embedded_extra_field(self, simple_extra_field_embedded_extra_field):
+        xml_object = litleXmlFields.CreateFromDocument(simple_extra_field_embedded_extra_field)
         self.assertEqual("Approved", xml_object.transactionResponse.message)
 
     def test_simple_EmbeddedField(self):
@@ -91,11 +75,3 @@ class TestCreateFromDom(unittest.TestCase):
         xml_object = litleXmlFields.CreateFromDocument(xml_text)
         self.assertEqual("bin", xml_object.transactionResponse.tokenResponse.bin)
         self.assertEqual("Message", xml_object.transactionResponse.tokenResponse.tokenMessage)
-
-def suite():
-    suite = unittest.TestSuite()
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestCreateFromDom)
-    return suite
-
-if __name__ =='__main__':
-    unittest.main()

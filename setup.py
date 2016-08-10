@@ -1,5 +1,5 @@
 from setuptools import setup
-setup(name='LitleSdkPython',
+setup(name='LitleSdkPython3',
       version='9.3.1beta',
       description='Vantiv eCommerce SDK for Python',
       author='Aleksander Sukharev',
@@ -16,8 +16,6 @@ setup(name='LitleSdkPython',
           'Environment :: Web Environment',
           'Intended Audience :: Information Technology',
           'License :: OSI Approved :: MIT License',
-          'Operating System :: OS Independent'
-          'Operating System :: MacOS',
           'Operating System :: Microsoft',
           'Operating System :: Unix',
           'Operating System :: POSIX',
