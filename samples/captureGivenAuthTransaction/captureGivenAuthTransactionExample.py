@@ -1,12 +1,14 @@
 from litleSdkPython.litleOnlineRequest import *
- 
+
+import ipdb; ipdb.set_trace() # DEBUG
 config = Configuration()
 config.username="jenkins"
 config.password="certpass"
 config.merchantId="0180"
 config.url="Sandbox"
 config.proxy="iwp1.lowell.litle.com:8080"
- 
+config.printXml = True
+
 #Capture Given Auth
 capturegivenauth = litleXmlFields.captureGivenAuth()
 capturegivenauth.orderId = '12344'
@@ -23,10 +25,10 @@ card.number = "4100000000000001"
 card.expDate = "1210"
 card.type = 'VI'
 capturegivenauth.card = card
- 
+
 litleXml = litleOnlineRequest(config)
 response = litleXml.sendRequest(capturegivenauth)
- 
+
 #display results
 print("Response: " + response.response)
 print("Message: " + response.message)

@@ -116,7 +116,7 @@ class litleBatchRequest:
 
     def addTransaction(self, transaction):
         if self.numOfTxn == 0:
-            __batchFile = open(self._filePath, 'wb')
+            __batchFile = open(self._filePath, 'w')
         else:
             __batchFile = open(self._filePath, 'a')
 
@@ -343,7 +343,7 @@ class litleBatchRequest:
                 transaction.reportGroup = self.config.reportGroup
             try:
                 __batchFile.write(self.lbfr.tnxToXml(transaction))
-            except pyxb.BindingValidationError as e:
+            except pyxb.ValidationError as e:
                 raise Exception("There was an exception while translating the transaction object.",e)
             __batchFile.close()
             return TransactionCode.SUCCESS
