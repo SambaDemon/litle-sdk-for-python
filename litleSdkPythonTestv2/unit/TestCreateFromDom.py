@@ -20,35 +20,33 @@
 # WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 # OTHER DEALINGS IN THE SOFTWARE.
-
-from SetupTest import *
+from litleSdkPython import litleXmlFields
 
 
 class TestCreateFromDom():
 
-    def test_simple_extra_field(self, simple_extra_field):
-        xml_object = litleXmlFields.CreateFromDocument(simple_extra_field)
+    def testSimpleExtraField(self):
+        import ipdb; ipdb.set_trace() # DEBUG
+        xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
+                    xmlns='http://www.litle.com/schema'><captureGivenAuthResponse id='' \
+                    reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId>\
+                    <orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime>\
+                    <message>Approved</message><authCode>83307</authCode></captureGivenAuthResponse>\
+                    </litleOnlineResponse>"
+        xml_object = litleXmlFields.CreateFromDocument(xml_text)
         self.assertEqual("Approved", xml_object.transactionResponse.message)
 
-    def test_simple_extra_field_embedded_extra_field(self, simple_extra_field_embedded_extra_field):
-        xml_object = litleXmlFields.CreateFromDocument(simple_extra_field_embedded_extra_field)
+    def testSimpleExtraFieldEmbeddedExtraField(self):
+        xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
+                    xmlns='http://www.litle.com/schema'><captureGivenAuthResponse id='' \
+                    reportGroup='DefaultReportGroup' customerId=''><litleTxnId>057484783403434000</litleTxnId>\
+                    <orderId>12344</orderId><response>000</response><responseTime>2012-06-05T16:36:39</responseTime>\
+                    <message>Approved</message><authCode><extraField>extra</extraField></authCode>\
+                    </captureGivenAuthResponse></litleOnlineResponse>"
+        xml_object = litleXmlFields.CreateFromDocument(xml_text)
         self.assertEqual("Approved", xml_object.transactionResponse.message)
 
-    def test_simple_EmbeddedField(self):
-        test = ("""<litleOnlineResponse version='10.1' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'>
-                <authorizationResponse id='' reportGroup='Default Report Group' customerId=''>
-                <litleTxnId>100000000000000011</litleTxnId>
-                <orderId>1</orderId>
-                <response>000</response>
-                <responseTime>2016-07-27T07:38:00</responseTime>
-                <message>Approved</message>
-                <authCode>11111 </authCode>
-                <fraudResult>
-                <avsResult>01</avsResult>
-                <cardValidationResult>M</cardValidationResult>
-                </fraudResult>
-                </authorizationResponse>
-                </litleOnlineResponse>""")
+    def testSimpleEmbeddedField(self):
         xml_text = ("""<litleOnlineResponse version='8.13' response='0' message='Valid Format' xmlns='http://www.litle.com/schema'>
                     <authorizationResponse id='' reportGroup='DefaultReportGroup'customerId=''>
                     <litleTxnId>057484783403434000</litleTxnId>
@@ -64,7 +62,7 @@ class TestCreateFromDom():
         self.assertEqual("bin", xml_object.transactionResponse.tokenResponse.bin)
         self.assertEqual("Message", xml_object.transactionResponse.tokenResponse.tokenMessage)
 
-    def test_simple_ExtraEmbeddedField(self):
+    def testSimpleExtraEmbeddedField(self):
         xml_text = "<litleOnlineResponse version='8.13' response='0' message='Valid Format' \
         xmlns='http://www.litle.com/schema'><authorizationResponse id='' reportGroup='DefaultReportGroup' \
         customerId=''><litleTxnId>057484783403434000</litleTxnId><orderId>12344</orderId><response>000</response>\

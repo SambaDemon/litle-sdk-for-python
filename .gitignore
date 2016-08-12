@@ -3,12 +3,14 @@
 /LitleSdkPython.egg-info
 .project
 *.bak
+*.swp
 __pycache__
 .ropeproject
 .pydevproject
 /*.egg-info
 /nosetests.xml
 .idea/
+.cache/
 /litleSdkPythonTest/unit/test/
 /.settings
 /litleSdkPython/*.pyc
