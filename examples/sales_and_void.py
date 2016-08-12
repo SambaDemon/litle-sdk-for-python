@@ -6,6 +6,8 @@ card = exampleConfig.set_card()
 contact = exampleConfig.set_contact()
 void = litleXmlFields.void()
 
+litleXml = litleOnlineRequest(config)
+
 # Set the sale with card
 sale = litleXmlFields.sale()
 sale.orderId = "2"
@@ -14,7 +16,6 @@ sale.orderSource = "ecommerce"
 sale.billToAddress = contact
 sale.card = card
 
-litleXml = litleOnlineRequest(config)
 response = litleXml.sendRequest(sale)
 
 print('\n')
@@ -22,7 +23,6 @@ print('Send sale with card request:')
 exampleConfig.display_results(response)
 
 # Void current sale
-import ipdb; ipdb.set_trace() # DEBUG
 void.litleTxnId = response.litleTxnId
 response = litleXml.sendRequest(void)
 

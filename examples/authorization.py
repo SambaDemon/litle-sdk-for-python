@@ -4,14 +4,14 @@ from litleSdkPython.litleOnlineRequest import litleOnlineRequest, litleXmlFields
 config = exampleConfig.set_config()
 card = exampleConfig.set_card()
 
+litleXml = litleOnlineRequest(config)
+
 # Set Authorization
 auth = litleXmlFields.authorization()
 auth.orderId = '1'
 auth.amount = 1
 auth.orderSource = 'ecommerce'
 auth.card = card
-
-litleXml = litleOnlineRequest(config)
 response = litleXml.sendRequest(auth)
 
 # Display results

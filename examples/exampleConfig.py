@@ -2,14 +2,16 @@ from litleSdkPython.litleOnlineRequest import Configuration, litleXmlFields
 
 
 def set_config():
+    '''
+    If you want to display request and response body
+    then set config.printXml = True
+    '''
     config = Configuration()
     config.username = "jenkins"
     config.password = "certpass"
     config.merchantId = "0180"
     config.url = "Sandbox"
     config.proxy = "iwp1.lowell.litle.com:8080"
-    # Use it to display all request and response body
-    config.printXml = True
 
     return config
 
