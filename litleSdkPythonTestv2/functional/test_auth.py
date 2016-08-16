@@ -10,98 +10,56 @@ class TestAuth:
     def setup(self, config):
         self.config = config
 
-    def testSimpleAuthWithCard(self):
-        authorization = litleXmlFields.authorization()
-        authorization.orderId = '1234'
-        authorization.amount = 106
-        authorization.orderSource = 'ecommerce'
-
-        card = litleXmlFields.cardType()
-        card.number = "4100000000000000"
-        card.expDate = "1210"
-        card.type = 'VI'
-
+    def testSimpleAuthWithCard(self, auth_fixture, card_fixture):
+        authorization = auth_fixture
+        card = card_fixture
         authorization.card = card
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(authorization)
-        assert("000" == response.response)
+        assert(response.response == "000")
 
-    def testSimpleAuthWithPaypal(self):
-        authorization = litleXmlFields.authorization()
-        authorization.orderId = '12344'
-        authorization.amount = 106
-        authorization.orderSource = 'ecommerce'
-
-        paypal = litleXmlFields.payPal()
-        paypal.payerId = "1234"
-        paypal.token = "1234"
-        paypal.transactionId = '123456'
-
+    def testSimpleAuthWithPaypal(self, auth_fixture, paypal_fixture):
+        authorization = auth_fixture
+        paypal = paypal_fixture
         authorization.paypal = paypal
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(authorization)
-        assert("Approved" == response.message)
+        assert(response.message == "Approved")
 
-    def testSimpleAuthWithSecondaryAmountAndApplepay(self):
-
-        authorization = litleXmlFields.authorization()
-        authorization.orderId = '1234'
-        authorization.amount = 110
-        authorization.orderSource = 'ecommerce'
+    def testSimpleAuthWithSecondaryAmountAndApplepay(
+            self, auth_fixture, applepay_fixture, applepay_header_fixture):
+        authorization = auth_fixture
         authorization.secondaryAmount = '10'
-
-        applepay = litleXmlFields.applepayType()
-        applepay.data = "4100000000000000"
-        applepay.signature = "sign"
-        applepay.version = '1'
-        header = litleXmlFields.applepayHeaderType()
-        header.applicationData = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' # noqa
-        header.ephemeralPublicKey ='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' # noqa
-        header.publicKeyHash = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' # noqa
-        header.transactionId = '1024'
+        applepay = applepay_fixture
+        header = applepay_header_fixture
         applepay.header = header
         authorization.applepay = applepay
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(authorization)
+        assert(response.message == "Insufficient Funds")
+        assert(
+            response.applepayResponse.transactionAmount == authorization.amount)
 
-        assert("Insufficient Funds" == response.message)
-        assert(110 == response.applepayResponse.transactionAmount)
-
-    def testPosWithoutCapabilityAndEntryMode(self):
-        authorization = litleXmlFields.authorization()
-        authorization.orderId = '123456'
-        authorization.amount = 106
-        authorization.orderSource = 'ecommerce'
-
-        pos = litleXmlFields.pos()
-        pos.cardholderId = "pin"
+    def testPosWithoutCapabilityAndEntryMode(
+            self, auth_fixture, pos_fixture, card_fixture):
+        authorization = auth_fixture
+        pos = pos_fixture
+        card = card_fixture
         authorization.pos = pos
-
-        card = litleXmlFields.cardType()
-        card.number = "4100000000000002"
-        card.expDate = "1210"
-        card.type = 'VI'
-        card.cardValidationNum = '1213'
-
         authorization.card = card
 
-        litle = litleOnlineRequest(self.config)
+        litleXml = litleOnlineRequest(self.config)
         with pytest.raises(Exception):
-            litle.sendRequest(authorization)
+            litleXml.sendRequest(authorization)
 
-    def testAccountUpdate(self):
-        authorization = litleXmlFields.authorization()
-        authorization.orderId = '12344'
-        authorization.amount = 106
-        authorization.orderSource = 'ecommerce'
+    def testAccountUpdate(self, auth_fixture, card_fixture):
+        authorization = auth_fixture
 
-        card = litleXmlFields.cardType()
+        card = card_fixture
         card.number = "4100100000000000"
-        card.expDate = "1210"
-        card.type = 'VI'
         card.cardValidationNum = '1213'
 
         authorization.card = card
@@ -109,8 +67,7 @@ class TestAuth:
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(authorization)
 
-        assert("4100100000000000" ==
-               response.accountUpdater.originalCardInfo.number)
+        assert(response.accountUpdater.originalCardInfo.number == card.number)
 
     def testTrackData(self):
         authorization = litleXmlFields.authorization()
@@ -137,15 +94,13 @@ class TestAuth:
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(authorization)
 
-        assert('Approved' == response.message)
+        assert(response.message == 'Approved')
 
-    def testListOfTaxAmounts(self):
-        authorization = litleXmlFields.authorization()
+    def testListOfTaxAmounts(self, auth_fixture, card_fixture):
+        authorization = auth_fixture
         authorization.id = '12345'
         authorization.reportGroup = 'Default'
-        authorization.orderId = '67890'
         authorization.amount = 10000
-        authorization.orderSource = 'ecommerce'
 
         enhanced = litleXmlFields.enhancedData()
         dt1 = litleXmlFields.detailTax()
@@ -156,13 +111,10 @@ class TestAuth:
         enhanced.detailTax.append(dt2)
         authorization.enhancedData = enhanced
 
-        card = litleXmlFields.cardType()
-        card.number = '4100000000000000'
-        card.expDate = '1215'
-        card.type = 'VI'
+        card = card_fixture
         authorization.card = card
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(authorization)
 
-        assert('Approved' == response.message)
+        assert(response.message == 'Approved')

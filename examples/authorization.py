@@ -2,6 +2,7 @@ import exampleConfig
 from litleSdkPython.litleOnlineRequest import litleOnlineRequest, litleXmlFields
 
 config = exampleConfig.set_config()
+config.printXml = True
 card = exampleConfig.set_card()
 
 litleXml = litleOnlineRequest(config)

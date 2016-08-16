@@ -116,7 +116,7 @@ class litleBatchRequest:
 
     def addTransaction(self, transaction):
         if self.numOfTxn == 0:
-            __batchFile = open(self._filePath, 'w')
+            __batchFile = open(self._filePath, 'wb')
         else:
             __batchFile = open(self._filePath, 'a')
 

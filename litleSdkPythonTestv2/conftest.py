@@ -19,8 +19,8 @@ def config():
     config.proxyHost = ""
     config.proxyPort = ""
     config.reportGroup = "Test Report Group"
-    config.batchRequestFolder = "test/unit/"
-    config.batchResponseFolder = "test/unit/"
+    config.batchRequestFolder = "test_tmp/"
+    config.batchResponseFolder = "test_tmp/"
     config.sftpUsername = "sftp"
     config.sftpPassword = "password"
 

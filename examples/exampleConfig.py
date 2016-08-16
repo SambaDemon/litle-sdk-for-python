@@ -7,10 +7,10 @@ def set_config():
     then set config.printXml = True
     '''
     config = Configuration()
-    config.username = "jenkins"
-    config.password = "certpass"
-    config.merchantId = "0180"
-    config.url = "Sandbox"
+    config.username = "CASTING"
+    config.password = "cert3yQp"
+    config.merchantId = "1265316"
+    config.url = "Prelive"
     config.proxy = "iwp1.lowell.litle.com:8080"
 
     return config

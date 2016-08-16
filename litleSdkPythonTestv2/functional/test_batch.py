@@ -10,28 +10,29 @@ class TestBatch:
     @classmethod
     @pytest.fixture(scope="class", autouse=True)
     def setup(self, config):
+        self.requestFileName = "litleSdk-testBatchFile-testSendToLitleSFTP_WithPreviouslyCreatedFile.xml" # noqa
         self.config = config
+        self.litleBatchFileRequest = litleBatchFileRequest(
+            self.requestFileName, self.config)
 
     def testSendToLitleSFTP_WithPreviouslyCreatedFile(self):
-        import ipdb; ipdb.set_trace() # DEBUG
-        requestFileName = "litleSdk-testBatchFile-testSendToLitleSFTP_WithPreviouslyCreatedFile.xml" # noqa
-        request = litleBatchFileRequest(requestFileName, config=self.config)
-        requestFile = request.requestFile.name
+        requestFile = self.litleBatchFileRequest.requestFile.name
         assert(os.path.exists(requestFile) == True)
-        configFromFile = request.config
+        configFromFile = self.litleBatchFileRequest.config
         assert(configFromFile.batchHost == 'localhost')
         assert(configFromFile.batchPort, '2104')
         requestDir = configFromFile.batchRequestFolder
         responseDir = configFromFile.batchResponseFolder
-        self.prepareTestRequest(request)
-        request.prepareForDelivery()
+        import ipdb; ipdb.set_trace() # DEBUG
+        self.prepareTestRequest(self.litleBatchFileRequest)
+        self.litleBatchFileRequest.prepareForDelivery()
         assert(os.path.exists(requestFile) == True)
         assert(os.path.getsize(requestFile) > 0)
-        request2 = litleBatchFileRequest(requestFileName)
+        request2 = litleBatchFileRequest(self.requestFileName)
         response = request2.sendRequestSFTP(True)
         self.assertPythonApi(request2, response)
         self.assertGeneratedFiles(
-            requestDir, responseDir, requestFileName, request2)
+            requestDir, responseDir, self.requestFileName, request2)
 
     def assertPythonApi(self, request, response):
         assert(response is not None)
