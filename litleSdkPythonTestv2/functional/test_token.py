@@ -1,5 +1,4 @@
 import pytest
-from litleSdkPython import litleXmlFields
 from litleSdkPython.litleOnlineRequest import litleOnlineRequest
 
 
@@ -10,48 +9,35 @@ class TestToken:
     def setup(self, config):
         self.config = config
 
-    def testSimpleToken(self):
-        token = litleXmlFields.registerTokenRequest()
-        token.orderId = '12344'
+    def testSimpleToken(self, register_token_fixture):
+        token = register_token_fixture
         token.accountNumber = '1233456789103801'
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(token)
         assert(response.message == "Account number was successfully registered")
 
-    def testSimpleTokenWithPaypage(self):
-        token = litleXmlFields.registerTokenRequest()
-        token.orderId = '12344'
+    def testSimpleTokenWithPaypage(self, register_token_fixture):
+        token = register_token_fixture
         token.paypageRegistrationId = '1233456789101112'
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(token)
         assert(response.message == "Account number was successfully registered")
 
-    def testSimpleTokenWithEcheck(self):
-        token = litleXmlFields.registerTokenRequest()
-        token.orderId = '12344'
-        echeck = litleXmlFields.echeckForTokenType()
-        echeck.accNum = "12344565"
-        echeck.routingNum = "123476545"
+    def testSimpleTokenWithEcheck(
+            self, register_token_fixture, echeck_for_token_fixture):
+        token = register_token_fixture
+        echeck = echeck_for_token_fixture
         token.echeckForToken = echeck
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(token)
         assert(response.message == "Account number was successfully registered")
 
-    def testSimpleTokenWithApplepay(self):
-        token = litleXmlFields.registerTokenRequest()
-        token.orderId = '12344'
-        applepay = litleXmlFields.applepayType()
-        applepay.data = "4100000000000000"
-        applepay.signature = "sign"
-        applepay.version = '1'
-        header = litleXmlFields.applepayHeaderType()
-        header.applicationData = \
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-        header.ephemeralPublicKey = \
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-        header.publicKeyHash = \
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-        header.transactionId = '1024'
+    def testSimpleTokenWithApplepay(
+            self, register_token_fixture,
+            applepay_fixture, applepay_header_fixture):
+        token = register_token_fixture
+        applepay = applepay_fixture
+        header = applepay_header_fixture
         applepay.header = header
         token.applepay = applepay
         litleXml = litleOnlineRequest(self.config)
@@ -59,20 +45,19 @@ class TestToken:
         assert(response.message == "Account number was successfully registered")
         assert(response.applepayResponse.transactionAmount == 0)
 
-    def testTokenEcheckMissingRequiredField(self):
-        token = litleXmlFields.registerTokenRequest()
-        token.orderId = '12344'
-        echeck = litleXmlFields.echeckForTokenType()
-        echeck.routingNum = "123476545"
+    def testTokenEcheckMissingRequiredField(
+            self, register_token_fixture, echeck_for_token_fixture):
+        token = register_token_fixture
+        echeck = echeck_for_token_fixture
+        echeck.accNum = None
         token.echeckForToken = echeck
 
         litle = litleOnlineRequest(self.config)
         with pytest.raises(Exception):
             litle.sendRequest(token)
 
-    def testCovertPaypageRegistrationIdIntoToken(self):
-        tokenRequest = litleXmlFields.registerTokenRequest()
-        tokenRequest.orderId = '12345'
+    def testCovertPaypageRegistrationIdIntoToken(self, register_token_fixture):
+        tokenRequest = register_token_fixture
         tokenRequest.paypageRegistrationId = \
             '123456789012345678901324567890abcdefghi'
 

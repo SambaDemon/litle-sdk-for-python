@@ -40,28 +40,21 @@ class TestCredit:
         response = litleXml.sendRequest(credit)
         assert(response.message == "Approved")
 
-    def testsimpleCreditWithTxnAndSecondaryAmount(
-            self, credit_txn_fixture, card_fixture):
+    def testSimpleCreditWithTxnAndSecondaryAmount(self, credit_txn_fixture):
         credit = credit_txn_fixture
         credit.secondaryAmount = 10
-        card = card_fixture
-        credit.card = card
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(credit)
         assert(response.message == "Approved")
 
-    def simpleCreditConflictWithTxnAndOrderId(self, credit_fixture):
+    def testSimpleCreditConflictWithTxnAndOrderId(self, credit_fixture):
         credit = credit_fixture
         credit.litleTxnId = "12345"
 
         litleXml = litleOnlineRequest(self.config)
-        try:
-            response = litleXml.sendRequest(credit)
-        except Exception:
-            assert(response.message.startswith(
-                "Error validating xml data against the schema"),
-                "Error in validating")
+        with pytest.raises(Exception):
+            litleXml.sendRequest(credit)
 
     def testPaypalNotes(self, credit_fixture, card_fixture):
         credit = credit_fixture
@@ -76,7 +69,6 @@ class TestCredit:
     def testProcessingInstructionAndAmexData(
             self, credit_fixture, card_fixture):
         credit = credit_fixture
-
         pI = litleXmlFields.processingInstructions()
         pI.bypassVelocityCheck = True
         credit.processingInstructions = pI

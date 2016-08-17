@@ -10,10 +10,8 @@ class TestEcheckCredit:
     def setup(self, config):
         self.config = config
 
-    def testSimpleEcheckCredit(self):
-        echeckCredit = litleXmlFields.echeckCredit()
-        echeckCredit.amount = 12
-        echeckCredit.litleTxnId = 123456789101112
+    def testSimpleEcheckCredit(self, echeck_credit_txn_fixture):
+        echeckCredit = echeck_credit_txn_fixture
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(echeckCredit)
@@ -26,100 +24,55 @@ class TestEcheckCredit:
         with pytest.raises(Exception):
             litle.sendRequest(echeckCredit)
 
-    def testEcheckCreditWithEcheck(self):
-        echeckCredit = litleXmlFields.echeckCredit()
-        echeckCredit.amount = 12
-        echeckCredit.orderId = "12345"
-        echeckCredit.orderSource = 'ecommerce'
-
-        echeck = litleXmlFields.echeck()
-        echeck.accType = 'Checking'
-        echeck.accNum = "1234567890"
-        echeck.routingNum = "123456789"
-        echeck.checkNum = "123455"
+    def testEcheckCreditWithEcheck(
+            self, echeck_credit_fixture, echeck_fixture, contact_fixture):
+        echeckCredit = echeck_credit_fixture
+        echeck = echeck_fixture
         echeckCredit.echeckOrEcheckToken = echeck
-
-        billToAddress = litleXmlFields.contact()
-        billToAddress.name = "Bob"
-        billToAddress.City = "Lowell"
-        billToAddress.State = "MA"
-        billToAddress.email = "litle.com"
+        billToAddress = contact_fixture
         echeckCredit.billToAddress = billToAddress
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(echeckCredit)
         assert(response.message == "Approved")
 
-    def testEcheckCreditWithSecondryAmount(self):
-        echeckCredit = litleXmlFields.echeckCredit()
-        echeckCredit.amount = 12
+    def testEcheckCreditWithSecondryAmount(
+            self, echeck_credit_fixture, echeck_fixture, contact_fixture):
+        echeckCredit = echeck_credit_fixture
         echeckCredit.secondaryAmount = 10
-        echeckCredit.orderId = "12345"
-        echeckCredit.orderSource = 'ecommerce'
-
-        echeck = litleXmlFields.echeck()
-        echeck.accType = 'Checking'
-        echeck.accNum = "1234567890"
-        echeck.routingNum = "123456789"
-        echeck.checkNum = "123455"
+        echeck = echeck_fixture
         echeckCredit.echeckOrEcheckToken = echeck
-
-        billToAddress = litleXmlFields.contact()
-        billToAddress.name = "Bob"
-        billToAddress.City = "Lowell"
-        billToAddress.State = "MA"
-        billToAddress.email = "litle.com"
+        billToAddress = contact_fixture
         echeckCredit.billToAddress = billToAddress
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(echeckCredit)
         assert(response.message == "Approved")
 
-    def testEcheckCreditWithLitleTxnIdAndSecondryAmount(self):
-        echeckCredit = litleXmlFields.echeckCredit()
-        echeckCredit.amount = 12
-        echeckCredit.litleTxnId = 123456789101112
+    def testEcheckCreditWithLitleTxnIdAndSecondryAmount(
+            self, echeck_credit_txn_fixture):
+        echeckCredit = echeck_credit_txn_fixture
         echeckCredit.secondaryAmount = 10
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(echeckCredit)
         assert(response.message == "Approved")
 
-    def testEcheckCreditWithToken(self):
-        echeckCredit = litleXmlFields.echeckCredit()
-        echeckCredit.amount = 12
-        echeckCredit.orderId = "12345"
-        echeckCredit.orderSource = 'ecommerce'
-
-        token = litleXmlFields.echeckToken()
-        token.accType = 'Checking'
-        token.litleToken = "1234565789012"
-        token.routingNum = "123456789"
-        token.checkNum = "123455"
+    def testEcheckCreditWithToken(
+            self, echeck_credit_fixture, echeck_token_fixture, contact_fixture):
+        echeckCredit = echeck_credit_fixture
+        token = echeck_token_fixture
         echeckCredit.echeckOrEcheckToken = token
-
-        billToAddress = litleXmlFields.contact()
-        billToAddress.name = "Bob"
-        billToAddress.City = "Lowell"
-        billToAddress.State = "MA"
-        billToAddress.email = "litle.com"
+        billToAddress = contact_fixture
         echeckCredit.billToAddress = billToAddress
 
         litleXml = litleOnlineRequest(self.config)
         response = litleXml.sendRequest(echeckCredit)
         assert(response.message == "Approved")
 
-    def testMissingBilling(self):
-        echeckCredit = litleXmlFields.echeckCredit()
-        echeckCredit.amount = 12
-        echeckCredit.orderId = "12345"
-        echeckCredit.orderSource = 'ecommerce'
-
-        echeck = litleXmlFields.echeck()
-        echeck.accType = 'Checking'
-        echeck.accNum = "1234567890"
-        echeck.routingNum = "123456789"
-        echeck.checkNum = "123455"
+    def testMissingBilling(self, echeck_credit_fixture, echeck_fixture):
+        echeckCredit = echeck_credit_fixture
+        echeck = echeck_fixture
         echeckCredit.echeckOrEcheckToken = echeck
 
         litle = litleOnlineRequest(self.config)

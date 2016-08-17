@@ -99,6 +99,135 @@ def credit_txn_fixture():
     credit = litleXmlFields.credit()
     credit.amount = 110
     credit.litleTxnId = "12345"
-    credit.orderSource = 'ecommerce'
 
     return credit
+
+
+@fixture()
+def echeck_credit_txn_fixture():
+    echeckCredit = litleXmlFields.echeckCredit()
+    echeckCredit.amount = 12
+    echeckCredit.litleTxnId = 123456789101112
+
+    return echeckCredit
+
+
+@fixture()
+def echeck_credit_fixture():
+    echeckCredit = litleXmlFields.echeckCredit()
+    echeckCredit.amount = 12
+    echeckCredit.orderId = "12345"
+    echeckCredit.orderSource = 'ecommerce'
+
+    return echeckCredit
+
+
+@fixture()
+def echeck_fixture():
+    echeck = litleXmlFields.echeck()
+    echeck.accType = 'Checking'
+    echeck.accNum = "1234567890"
+    echeck.routingNum = "123456789"
+    echeck.checkNum = "123455"
+
+    return echeck
+
+
+@fixture()
+def contact_fixture():
+    billToAddress = litleXmlFields.contact()
+    billToAddress.name = "Bob"
+    billToAddress.City = "Lowell"
+    billToAddress.State = "MA"
+    billToAddress.email = "litle.com"
+
+    return billToAddress
+
+
+@fixture()
+def echeck_token_fixture():
+    token = litleXmlFields.echeckToken()
+    token.accType = 'Checking'
+    token.litleToken = "1234565789012"
+    token.routingNum = "123456789"
+    token.checkNum = "123455"
+
+    return token
+
+
+@fixture()
+def echeck_sale_fixture():
+    echecksale = litleXmlFields.echeckSale()
+    echecksale.amount = 123456
+    echecksale.orderId = "12345"
+    echecksale.orderSource = 'ecommerce'
+
+    return echecksale
+
+
+@fixture()
+def echeck_sale_txn_fixture():
+    echecksale = litleXmlFields.echeckSale()
+    echecksale.litleTxnId = 123456789101112
+    echecksale.amount = 12
+
+    return echecksale
+
+
+@fixture()
+def echeck_verfication_fixture():
+    echeckverification = litleXmlFields.echeckVerification()
+    echeckverification.amount = 123456
+    echeckverification.orderId = '12345'
+    echeckverification.orderSource = 'ecommerce'
+
+    return echeckverification
+
+
+@fixture()
+def force_capture_fixture():
+    forcecapture = litleXmlFields.forceCapture()
+    forcecapture.amount = 106
+    forcecapture.orderId = '12344'
+    forcecapture.orderSource = 'ecommerce'
+
+    return forcecapture
+
+
+@fixture()
+def card_token_fixture():
+    token = litleXmlFields.cardTokenType()
+    token.type = 'VI'
+    token.expDate = "1210"
+    token.litleToken = "123456789101112"
+    token.cardValidationNum = "555"
+
+    return token
+
+
+@fixture()
+def sale_fixture():
+    sale = litleXmlFields.sale()
+    sale.litleTxnId = 123456
+    sale.amount = 106
+    sale.orderId = '12344'
+    sale.orderSource = 'ecommerce'
+
+    return sale
+
+
+@fixture()
+def register_token_fixture():
+    token = litleXmlFields.registerTokenRequest()
+    token.orderId = '12344'
+
+    return token
+
+
+@fixture()
+def echeck_for_token_fixture():
+    echeck = litleXmlFields.echeckForTokenType()
+    echeck.accNum = "12344565"
+    echeck.routingNum = "123476545"
+
+    return echeck
