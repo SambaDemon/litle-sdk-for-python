@@ -9,7 +9,7 @@ def set_config():
     config = Configuration()
     config.username = "CASTING"
     config.password = "cert3yQp"
-    config.merchantId = "1265316"
+    config.merchantId = "01265316"
     config.url = "Prelive"
     config.proxy = "iwp1.lowell.litle.com:8080"
 
