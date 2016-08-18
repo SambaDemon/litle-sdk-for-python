@@ -51,14 +51,14 @@ discount.name = 'Discount Name'
 discount.amount = 1
 discount.startDate = pdt.date(2016, 10, 20)
 discount.endDate = pdt.date(2016, 10, 20)
-update.createDiscount = discount
+update.createDiscount = [discount, ]
 
 response = litleXml.sendRequest(update)
 
 # Send subscription with discount
 auth.orderId = '2'
 discount.discountCode = 'AUTUMNSALE2016'
-auth.recurringRequest.subscription.createDiscount = discount
+auth.recurringRequest.subscription.createDiscount = [discount, ]
 
 response = litleXml.sendRequest(auth)
 
